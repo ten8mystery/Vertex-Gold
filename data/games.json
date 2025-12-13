@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Golden Run",
+    "src": "games/golden-run.html",
+    "image": "images/golden-run.jpg",
+    "description": "Fast endless runner with speed boosts."
+  },
+  {
+    "name": "Treasure Clicker",
+    "src": "games/treasure-clicker.html",
+    "image": "images/treasure-clicker.jpg",
+    "description": "Idle game about stacking riches."
+  },
+  {
+    "name": "Vault Escape",
+    "src": "games/vault-escape.html",
+    "image": "images/vault-escape.jpg",
+    "description": "Puzzle your way out of the vault."
+  },
+  {
+    "name": "Gold Arena",
+    "src": "games/gold-arena.html",
+    "image": "images/gold-arena.jpg",
+    "description": "Competitive PvP combat battles."
+  }
+]
