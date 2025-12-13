@@ -52,5 +52,47 @@
     "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/205.html",
     "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/205.png",
     "description": "Game Active"
+  },
+  {
+    "name": "Celeste",
+    "src": "https://raw.githubusercontent.com/ten8mystery/Diamond-Backend/refs/heads/main/Celeste.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/623.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Bad Parenting",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/166.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/166.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "A Dance of Fire & Ice",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/59.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/59.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Geometry Dash Lite",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/27.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/27.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Slope",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/198.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/198.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Slope 2",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/368.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/368.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Bloxorz",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/169.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/169.png",
+    "description": "Game Active"
   }
 ]
