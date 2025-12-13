@@ -1,26 +1,26 @@
 [
   {
-    "name": "Golden Run",
-    "src": "games/golden-run.html",
-    "image": "images/golden-run.jpg",
-    "description": "Fast endless runner with speed boosts."
+    "name": "Minecraft 1.12",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/182.html",
+    "image": "https://www.pluggedin.com/wp-content/uploads/2020/01/minecraft-review-image.jpg",
+    "description": "Game Active"
   },
   {
-    "name": "Treasure Clicker",
-    "src": "games/treasure-clicker.html",
-    "image": "images/treasure-clicker.jpg",
-    "description": "Idle game about stacking riches."
+    "name": "Hollow Knight",
+    "src": "https://raw.githubusercontent.com/Belcrafting/Hollow-Knight-HTML-port-/refs/heads/main/Hollow%20Knight.html",
+    "image": "https://images.squarespace-cdn.com/content/v1/606d4deb4db8c15ea53b3624/1618824875786-3V9HT8BLB1L5PEEJC6ZQ/124.jpg",
+    "description": "Game Active"
   },
   {
-    "name": "Vault Escape",
-    "src": "games/vault-escape.html",
-    "image": "images/vault-escape.jpg",
-    "description": "Puzzle your way out of the vault."
+    "name": "Deltarune",
+    "src": "https://raw.githubusercontent.com/jr41875-arch/Deltarune-Web-port/refs/heads/main/deltarune.html",
+    "image": "https://www.vice.com/wp-content/uploads/sites/2/2025/06/Deltarune-Featured-Image.jpg",
+    "description": "Game Active"
   },
   {
-    "name": "Gold Arena",
-    "src": "games/gold-arena.html",
-    "image": "images/gold-arena.jpg",
-    "description": "Competitive PvP combat battles."
+    "name": "Undertale",
+    "src": "https://raw.githubusercontent.com/jimmyqrg/undertale/refs/heads/main/index.html",
+    "image": "https://media.gamestop.com/i/gamestop/10169207_SCR05/Undertale?w=1256&h=664&fmt=auto",
+    "description": "Game Active"
   }
 ]
