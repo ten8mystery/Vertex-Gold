@@ -259,7 +259,6 @@
     <div class="logo">GOLD HUB</div>
     <div style="display:flex; gap:14px;">
       <a href="index.html"><button>Home</button></a>
-      <a href="index.html"><button>Games</button></a>
       <a href="apps.html"><button>Apps</button></a>
       <a href="proxy.html"><button>Prxy</button></a>
     </div>
@@ -324,7 +323,10 @@
   closeBtn.onclick = () => { overlay.style.display = 'none'; iframe.srcdoc = ''; };
 
   fullscreenBtn.onclick = () => {
-    if (overlay.requestFullscreen) overlay.requestFullscreen();
+    const el = iframe;
+    if (el.requestFullscreen) el.requestFullscreen();
+    else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+    else if (el.msRequestFullscreen) el.msRequestFullscreen();
   };
 
   overlay.addEventListener('click', e => {
