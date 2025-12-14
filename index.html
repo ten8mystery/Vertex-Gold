@@ -6,45 +6,42 @@
   <title>Gold Hub</title>
   <link rel="icon" type="image/png" href="images/favicon.png">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --bg: #050505;
-      --bg-soft: #0b0b0b;
-      --gold-1: #ffd36a;
+      --panel: #0d0d0d;
+      --panel-soft: #131313;
+      --gold-1: #ffe08a;
       --gold-2: #ffbf3f;
       --gold-3: #cfa335;
       --text: #f5f5f5;
       --muted: #9b9b9b;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Inter, sans-serif; }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(900px 500px at 20% -10%, rgba(255,200,90,.15), transparent 60%),
+        radial-gradient(900px 500px at 80% 0%, rgba(255,200,90,.12), transparent 60%),
+        var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
     }
 
-body {
-  background: radial-gradient(1200px 600px at top, #1a1405, var(--bg));
-  color: var(--text);
-  min-height: 100vh;
-
-  display: flex;
-  flex-direction: column;
-}
-
-
-    /* ===== NAVBAR ===== */
+    /* ===== NAV ===== */
     header {
       position: sticky;
       top: 0;
       z-index: 50;
-      backdrop-filter: blur(10px);
-      background: rgba(5, 5, 5, 0.75);
-      border-bottom: 1px solid rgba(255, 215, 100, 0.1);
+      backdrop-filter: blur(14px);
+      background: rgba(5,5,5,.7);
+      border-bottom: 1px solid rgba(255,215,120,.12);
     }
 
     .nav {
@@ -57,49 +54,48 @@ body {
     }
 
     .logo {
-      font-size: 1.6rem;
-      font-weight: 800;
+      font-weight: 900;
+      font-size: 1.7rem;
       letter-spacing: 1px;
-      background: linear-gradient(120deg, var(--gold-1), var(--gold-2), var(--gold-1));
+      background: linear-gradient(120deg, #fff, var(--gold-1), #fff);
       background-size: 200% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: shine 4s linear infinite;
+      animation: shine 6s linear infinite;
     }
 
-    .nav button {
-      background: linear-gradient(135deg, var(--gold-2), var(--gold-3));
-      color: #000;
-      font-weight: 700;
+    .nav a button {
+      background: linear-gradient(135deg, var(--gold-1), var(--gold-3));
       border: none;
-      padding: 10px 18px;
-      border-radius: 12px;
+      padding: 12px 22px;
+      border-radius: 14px;
+      font-weight: 800;
       cursor: pointer;
-      box-shadow: 0 0 25px rgba(255, 200, 80, 0.35);
-      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 0 35px rgba(255,215,120,.45);
+      transition: transform .25s, box-shadow .25s;
     }
 
-    .nav button:hover {
+    .nav a button:hover {
       transform: translateY(-2px) scale(1.03);
-      box-shadow: 0 0 45px rgba(255, 200, 80, 0.6);
+      box-shadow: 0 0 65px rgba(255,215,120,.8);
     }
 
     /* ===== HERO ===== */
     .hero {
       max-width: 1300px;
       margin: auto;
-      padding: 90px 28px 60px;
+      padding: 110px 28px 80px;
       display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 60px;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 70px;
       align-items: center;
     }
 
     .hero h1 {
-      font-size: clamp(2.5rem, 5vw, 4.2rem);
-      font-weight: 800;
-      line-height: 1.05;
-      margin-bottom: 18px;
+      font-size: clamp(3rem, 6vw, 4.6rem);
+      font-weight: 900;
+      line-height: 1.02;
+      margin-bottom: 22px;
       background: linear-gradient(120deg, #fff, var(--gold-1));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -107,101 +103,94 @@ body {
 
     .hero p {
       color: var(--muted);
-      font-size: 1.05rem;
+      font-size: 1.08rem;
       max-width: 520px;
-      margin-bottom: 28px;
+      margin-bottom: 34px;
     }
 
-    .hero .actions {
+    .actions {
       display: flex;
-      gap: 16px;
+      gap: 18px;
+      flex-wrap: wrap;
     }
 
     .btn-primary {
       background: linear-gradient(135deg, var(--gold-1), var(--gold-3));
-      color: #000;
-      font-weight: 800;
-      padding: 14px 26px;
-      border-radius: 14px;
       border: none;
+      padding: 16px 30px;
+      font-weight: 900;
+      border-radius: 16px;
       cursor: pointer;
-      box-shadow: 0 0 35px rgba(255, 215, 100, 0.45);
-      transition: all .25s ease;
+      box-shadow: 0 0 45px rgba(255,215,120,.55);
+      transition: transform .25s, box-shadow .25s;
     }
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 0 60px rgba(255, 215, 100, 0.8);
+      box-shadow: 0 0 80px rgba(255,215,120,.9);
     }
 
     .btn-outline {
       background: transparent;
-      border: 1px solid rgba(255, 215, 100, 0.4);
+      border: 1px solid rgba(255,215,120,.45);
       color: var(--gold-1);
-      padding: 14px 26px;
-      border-radius: 14px;
+      padding: 16px 30px;
+      border-radius: 16px;
+      font-weight: 700;
       cursor: pointer;
     }
 
-    /* ===== HERO VISUAL ===== */
+    /* ===== HERO CARD ===== */
     .hero-card {
-      background: linear-gradient(180deg, #151007, #070707);
-      border-radius: 26px;
-      padding: 30px;
-      border: 1px solid rgba(255, 215, 100, 0.15);
-      box-shadow: inset 0 0 60px rgba(255, 215, 100, 0.08), 0 0 80px rgba(0,0,0,0.8);
       position: relative;
+      background: linear-gradient(180deg, #171104, #090909);
+      border-radius: 30px;
+      padding: 36px 34px;
+      border: 1px solid rgba(255,215,120,.18);
+      box-shadow:
+        inset 0 0 70px rgba(255,215,120,.08),
+        0 25px 90px rgba(0,0,0,.9);
       overflow: hidden;
     }
 
     .hero-card::after {
       content: "";
       position: absolute;
-      inset: 0;
-      background: linear-gradient(120deg, transparent 40%, rgba(255,215,120,0.12), transparent 60%);
-      opacity: 0;
-      animation: statGlow 8s ease-in-out infinite;
+      inset: -40%;
+      background: conic-gradient(from 0deg, transparent, rgba(255,215,120,.15), transparent);
+      animation: spin 18s linear infinite;
+      pointer-events: none;
     }
 
     .hero-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 16px;
+      font-size: 1.4rem;
+      margin-bottom: 22px;
       color: var(--gold-1);
+      position: relative;
+      z-index: 1;
     }
-
-    .stat {
-      opacity: 0;
-      transform: translateY(6px);
-      animation: statIn 0.6s ease forwards;
-    }
-
-    .stat:nth-child(2) { animation-delay: .1s; }
-    .stat:nth-child(3) { animation-delay: .25s; }
-    .stat:nth-child(4) { animation-delay: .4s; }
 
     .stat {
       display: flex;
       justify-content: space-between;
-      margin: 14px 0;
-      color: #ddd;
-    }
-      display: flex;
-      justify-content: space-between;
-      margin: 14px 0;
-      color: #ddd;
+      margin: 18px 0;
+      font-size: 1.05rem;
+      color: #e6e6e6;
+      position: relative;
+      z-index: 1;
     }
 
     /* ===== GAMES ===== */
     .section {
       max-width: 1300px;
       margin: auto;
-      padding: 70px 28px 90px;
+      padding: 80px 28px 100px;
       text-align: center;
     }
 
     .section h2 {
-      font-size: 2.4rem;
-      margin-bottom: 36px;
+      font-size: 2.6rem;
+      margin-bottom: 42px;
       background: linear-gradient(120deg, #fff, var(--gold-1));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -209,240 +198,152 @@ body {
 
     .games {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 32px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 36px;
       max-width: 1100px;
       margin: auto;
     }
 
     .game {
-      background: linear-gradient(180deg, #1a1306, #0a0a0a);
-      border-radius: 26px;
-      padding: 26px 22px 24px;
-      border: 1px solid rgba(255, 215, 100, 0.18);
-      transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s;
+      background: linear-gradient(180deg, #1a1306, #0b0b0b);
+      border-radius: 28px;
+      padding: 30px 26px 28px;
+      border: 1px solid rgba(255,215,120,.18);
       position: relative;
       overflow: hidden;
+      transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s;
     }
 
     .game::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at top, rgba(255,215,140,0.22), transparent 65%);
+      background: radial-gradient(circle at top, rgba(255,215,140,.25), transparent 65%);
       opacity: 0;
       transition: opacity .35s ease;
-      pointer-events: none;
     }
 
     .game:hover {
-      transform: translateY(-10px) scale(1.035);
+      transform: translateY(-12px) scale(1.04);
       box-shadow:
-        0 20px 60px rgba(0,0,0,.85),
-        0 0 70px rgba(255,215,120,.35);
+        0 30px 70px rgba(0,0,0,.9),
+        0 0 80px rgba(255,215,120,.4);
     }
 
     .game:hover::before { opacity: 1; }
 
     .game h4 {
-      font-size: 1.15rem;
-      margin-bottom: 10px;
+      font-size: 1.2rem;
+      margin-bottom: 12px;
       color: var(--gold-1);
+      position: relative;
+      z-index: 1;
     }
 
     .game p {
       font-size: .95rem;
       color: var(--muted);
-      margin-bottom: 18px;
+      margin-bottom: 22px;
+      position: relative;
+      z-index: 1;
     }
 
     .game button {
       width: 100%;
       background: linear-gradient(135deg, var(--gold-1), var(--gold-3));
       border: none;
-      padding: 12px;
-      font-weight: 800;
-      border-radius: 14px;
+      padding: 14px;
+      font-weight: 900;
+      border-radius: 16px;
       cursor: pointer;
-      box-shadow: 0 0 25px rgba(255,215,120,.35);
+      box-shadow: 0 0 30px rgba(255,215,120,.45);
       transition: transform .2s, box-shadow .2s;
+      position: relative;
+      z-index: 1;
     }
 
     .game button:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 0 45px rgba(255,215,120,.6);
+      transform: translateY(-2px);
+      box-shadow: 0 0 55px rgba(255,215,120,.75);
     }
 
     /* ===== FOOTER ===== */
-footer {
-  margin-top: auto;
-  border-top: 1px solid rgba(255, 215, 100, 0.1);
-  padding: 26px;
-  text-align: center;
-  color: #777;
-  font-size: .9rem;
-}
-
-
-    /* ===== ANIMATIONS ===== */
-    @keyframes shine {
-      to { background-position: 200% center; }
+    footer {
+      margin-top: auto;
+      border-top: 1px solid rgba(255,215,120,.12);
+      padding: 32px 24px;
+      text-align: center;
+      color: #888;
+      font-size: .9rem;
     }
 
-    @keyframes statGlow {
-      0%, 100% { opacity: 0; }
-      50% { opacity: 1; }
+    .footer-links { margin-top: 14px; }
+
+    .footer-links a {
+      color: var(--gold-1);
+      font-weight: 700;
+      text-decoration: none;
+      transition: color .2s, text-shadow .2s;
     }
 
-    @keyframes statIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .footer-links a:hover {
+      color: var(--gold-2);
+      text-shadow: 0 0 14px rgba(255,215,120,.7);
     }
-      100% { transform: translateX(50%) rotate(20deg); }
-    }
+
+    @keyframes shine { to { background-position: 200% center; } }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
     @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; }
+      .hero { grid-template-columns: 1fr; padding-top: 90px; }
     }
-
-    body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background:
-    radial-gradient(circle at 20% 10%, rgba(255,215,120,.08), transparent 40%),
-    radial-gradient(circle at 80% 30%, rgba(255,215,120,.06), transparent 45%);
-  pointer-events: none;
-  z-index: -1;
-}
-
-    .footer-links {
-  margin-top: 12px;
-}
-
-.footer-links a {
-  color: var(--gold-1);
-  font-weight: 600;
-  text-decoration: none;
-  transition: color 0.2s ease, text-shadow 0.2s ease;
-}
-
-.footer-links a:hover {
-  color: var(--gold-2);
-  text-shadow: 0 0 10px rgba(255, 215, 120, 0.6);
-}
-
-    
   </style>
 </head>
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
-import {
-  getDatabase,
-  ref,
-  onValue,
-  set,
-  remove,
-  onDisconnect
-} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyCMOFM7xg_zTMiLU52F22kQaR101MnNdLs",
-  authDomain: "gold-hub-b2f1d.firebaseapp.com",
-  databaseURL: "https://gold-hub-b2f1d-default-rtdb.firebaseio.com",
-  projectId: "gold-hub-b2f1d",
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
-
-// unique user id for this session
-const userId = crypto.randomUUID();
-
-// mark user as online
-const userRef = ref(db, `presence/users/${userId}`);
-set(userRef, true);
-
-// auto-remove on disconnect
-onDisconnect(userRef).remove();
-
-// listen to online count
-const usersRef = ref(db, "presence/users");
-onValue(usersRef, (snapshot) => {
-  const count = snapshot.exists()
-    ? Object.keys(snapshot.val()).length
-    : 0;
-
-  document.getElementById("players-count").textContent =
-    count.toLocaleString();
-});
-</script>
-
 <body>
 
-  <header>
-    <div class="nav">
-      <div class="logo">GOLD HUB</div>
-      <a href="play.html"><button>Launch Games</button></a>
+<header>
+  <div class="nav">
+    <div class="logo">GOLD HUB</div>
+    <div style="display:flex; gap:14px;">
+      <a href="play.html"><button>Games</button></a>
+      <a href="apps.html"><button>Apps</button></a>
+      <a href="proxy.html"><button>Prxy</button></a>
     </div>
-  </header>
-
-  <section class="hero">
-    <div>
-      <h1>Gold<br>Hub</h1>
-      <p>Gold Hub is the newest branch of Ore Games. Completely seperate and independent!</p>
-      <div class="actions">
-        <a href="play.html"><button class="btn-primary">Play Now</button></a>
-        <a href="play.html"><button class="btn-outline">Browse Games</button></a>
-      </div>
-    </div>
-
-    <div class="hero-card">
-      <h3>Live Platform Stats</h3>
-      <div class="stat"><span>Games Available</span><strong>128</strong></div>
-      <div class="stat">
-  <span>Players Online</span>
-  <strong id="players-count">--</strong>
-</div>
-
-      <div class="stat"><span>Status</span><strong>Online</strong></div>
-    </div>
-  </section>
-
-  <section class="section">
-    <a href="play.html" style="text-decoration:none"><h2 style="text-align:center">Featured Games</h2></a>
-    <div class="games">
-      <div class="game">
-        <h4>Minecraft 1.12</h4>
-        <p>Real Minecraft 1.12.2 in your browser!</p>
-        <a href="play.html"><button>Play</button></a>
-      </div>
-      <div class="game">
-        <h4>Baldi's Basics</h4>
-        <p>Baldi's Basics on the browser!</p>
-        <a href="play.html"><button>Play</button></a>
-      </div>
-      <div class="game">
-        <h4>Undertale</h4>
-        <p>Play as Frisk, exploring the ruins.</p>
-        <a href="play.html"><button>Play</button></a>
-      </div>
-      <div class="game">
-        <h4>Geometry Dash Lite</h4>
-        <p>Jump and fly in this rythem side scroller!</p>
-        <a href="play.html"><button>Play</button></a>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    © 2025 Gold Hub. All rights reserved.
-    <div class="footer-links">
-    <a href="https://discord.gg/GHhmDnajze" target="_blank">Join our Discord</a>
   </div>
-  </footer>
+</header>
+
+<section class="hero">
+  <div>
+    <h1>Gold<br>Hub</h1>
+    <p>The premium branch of Ore Games. Independent, fast, and dripping in polished gold.</p>
+    <div class="actions">
+      <a href="play.html"><button class="btn-primary">Play Now</button></a>
+      <a href="play.html"><button class="btn-outline">Browse Games</button></a>
+    </div>
+  </div>
+
+  <div class="hero-card">
+    <h3>Live Platform Stats</h3>
+    <div class="stat"><span>Games Available</span><strong>128</strong></div>
+    <div class="stat"><span>Players Online</span><strong id="players-count">--</strong></div>
+    <div class="stat"><span>Status</span><strong>Online</strong></div>
+  </div>
+</section>
+
+<section class="section">
+  <a href="play.html" style="text-decoration:none"><h2>Featured Games</h2></a>
+  <div class="games">
+    <div class="game"><h4>Minecraft 1.12</h4><p>Real Minecraft 1.12.2 in your browser.</p><a href="play.html"><button>Play</button></a></div>
+    <div class="game"><h4>Baldi's Basics</h4><p>Classic chaos, fully playable online.</p><a href="play.html"><button>Play</button></a></div>
+    <div class="game"><h4>Undertale</h4><p>Explore the ruins as Frisk.</p><a href="play.html"><button>Play</button></a></div>
+    <div class="game"><h4>Geometry Dash Lite</h4><p>Jump and fly through rhythm hell.</p><a href="play.html"><button>Play</button></a></div>
+  </div>
+</section>
+
+<footer>
+  © 2025 Gold Hub. All rights reserved.
+  <div class="footer-links"><a href="https://discord.gg/GHhmDnajze" target="_blank">Join our Discord</a></div>
+</footer>
 
 </body>
 </html>
