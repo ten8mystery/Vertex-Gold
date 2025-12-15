@@ -275,7 +275,7 @@ const closeBtn = document.getElementById('closeBtn');
 const fullscreenBtn = document.getElementById('fullscreenBtn');
 
 // Fetch games.json
-fetch('/data/games.json')
+fetch('https://raw.githubusercontent.com/ten8mystery/Vertex-Gold/main/data/games.json')
   .then(res => res.json())
   .then(data => {
     gameList.innerHTML = '';
