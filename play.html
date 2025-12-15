@@ -93,11 +93,6 @@ const iframe = document.getElementById('gameFrame');
 const closeBtn = document.getElementById('closeBtn');
 const fullscreenBtn = document.getElementById('fullscreenBtn');
 
-// Base URLs for Unity builds
-const unityBaseURL = {
-  "Hollow Knight": "https://cdn.jsdelivr.net/gh/web-ports/hollow-knight@latest/"
-};
-
 // Load games.json
 fetch('/data/games.json')
   .then(res => res.json())
@@ -116,25 +111,14 @@ fetch('/data/games.json')
       `;
 
       const playBtn = card.querySelector('.play');
-      playBtn.addEventListener('click', async () => {
-        overlay.style.display = 'flex';
-
-        try {
-          if (unityBaseURL[game.name]) {
-            const baseURL = unityBaseURL[game.name];
-            const res = await fetch(game.src);
-            let html = await res.text();
-            // Rewrite all relative paths to absolute URLs
-            html = html.replace(/(src|href|dataUrl|frameworkUrl|codeUrl)\s*=\s*["'](?!https?:\/\/)([^"']+)["']/g,
-              (m, attr, path) => `${attr}="${baseURL}${path}"`);
-            iframe.srcdoc = html;
-          } else {
-            iframe.srcdoc = '';
-            iframe.src = game.src;
-          }
-        } catch (err) {
-          iframe.srcdoc = `<p style="color:red">Failed to load game</p>`;
-          console.error(err);
+      playBtn.addEventListener('click', () => {
+        if (game.unity) {
+          // UNITY WEBGL GAME LOADER
+          openUnityGame(game.src);
+        } else {
+          // NORMAL HTML5 GAME
+          iframe.srcdoc = `<iframe src="${game.src}" style="width:100%;height:100%;border:none;"></iframe>`;
+          overlay.style.display = 'flex';
         }
       });
 
@@ -142,7 +126,32 @@ fetch('/data/games.json')
     });
   });
 
-// Search filtering
+// UNITY LOADER FUNCTION
+function openUnityGame(url) {
+  overlay.style.display = 'flex';
+
+  // Clear previous iframe content
+  iframe.src = '';
+  iframe.srcdoc = '';
+
+  fetch(url)
+    .then(r => r.text())
+    .then(html => {
+      const doc = iframe.contentDocument || iframe.contentWindow.document;
+      doc.open();
+      doc.write(html);
+      doc.close();
+    })
+    .catch(err => {
+      console.error(err);
+      const doc = iframe.contentDocument || iframe.contentWindow.document;
+      doc.open();
+      doc.write(`<h2 style="color:white;padding:20px;">Failed to load game</h2>`);
+      doc.close();
+    });
+}
+
+// SEARCH FILTER
 searchInput.addEventListener('input', () => {
   const q = searchInput.value.toLowerCase();
   document.querySelectorAll('.game').forEach(g => {
@@ -150,7 +159,7 @@ searchInput.addEventListener('input', () => {
   });
 });
 
-// Overlay controls
+// OVERLAY CONTROLS
 closeBtn.onclick = () => {
   overlay.style.display = 'none';
   iframe.src = '';
@@ -169,6 +178,7 @@ overlay.addEventListener('click', e => {
   }
 });
 </script>
+
 
 </body>
 </html>
