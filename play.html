@@ -281,7 +281,11 @@
     <button id="closeBtn">Close ✕</button>
     <button id="fullscreenBtn">Fullscreen ⛶</button>
   </div>
-  <iframe id="gameFrame" sandbox="allow-scripts allow-same-origin allow-pointer-lock allow-downloads allow-modals"></iframe>
+<iframe
+  id="gameFrame"
+  allow="fullscreen; autoplay; gamepad; pointer-lock"
+  allowfullscreen
+></iframe>
 </div>
 
 <script>
@@ -306,10 +310,12 @@
         `;
         gameList.appendChild(card);
 
-        card.querySelector('.play').addEventListener('click', () => {
-          iframe.srcdoc = '';
-          fetch(game.src).then(r => r.text()).then(html => iframe.srcdoc = html);
-          overlay.style.display = 'flex';
+card.querySelector('.play').addEventListener('click', () => {
+  iframe.removeAttribute("srcdoc"); // IMPORTANT
+  iframe.src = game.src;            // REAL document load
+  overlay.style.display = 'flex';
+});
+
         });
       });
     });
