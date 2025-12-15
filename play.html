@@ -110,39 +110,32 @@
       margin: auto;
     }
 
-.game {
-  background: linear-gradient(180deg, #1a1306, #0b0b0b);
-  border-radius: 30px;
-  padding: 22px 22px 26px;
-  border: 1px solid rgba(255,215,120,.18);
-  position: relative;
-  overflow: hidden;
-  transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s;
-  display: block;
-}
+    .game {
+      background: linear-gradient(180deg, #1a1306, #0b0b0b);
+      border-radius: 30px;
+      padding: 22px 22px 26px;
+      border: 1px solid rgba(255,215,120,.18);
+      position: relative;
+      overflow: hidden;
+      transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s;
+      display: block;
+    }
 
-/* ===== Hover Glow ===== */
-.game::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center, rgba(255,215,120,0.25), transparent 70%);
-  opacity: 0;
-  transition: opacity .35s ease;
-  pointer-events: none;
-}
+    .game::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(255,215,120,0.25), transparent 70%);
+      opacity: 0;
+      transition: opacity .35s ease;
+      pointer-events: none;
+    }
 
-.game:hover::before {
-  opacity: 1;
-}
-
-.game:hover {
-  transform: translateY(-12px) scale(1.04);
-  box-shadow:
-    0 30px 70px rgba(0,0,0,.9),
-    0 0 60px rgba(255,215,120,.45);
-}
-
+    .game:hover::before { opacity: 1; }
+    .game:hover {
+      transform: translateY(-12px) scale(1.04);
+      box-shadow: 0 30px 70px rgba(0,0,0,.9), 0 0 60px rgba(255,215,120,.45);
+    }
 
     .thumb {
       width: 100%;
@@ -231,7 +224,6 @@
     }
 
     @keyframes shine { to { background-position: 200% center; } }
-
     @media (max-width: 900px) { .section { padding-top: 70px; } }
   </style>
 </head>
@@ -265,6 +257,32 @@
   </div>
   <iframe id="gameFrame" allow="fullscreen; autoplay; gamepad; pointer-lock"></iframe>
 </div>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCMOFM7xg_zTMiLU52F22kQaR101MnNdLs",
+    authDomain: "gold-hub-b2f1d.firebaseapp.com",
+    databaseURL: "https://gold-hub-b2f1d-default-rtdb.firebaseio.com",
+    projectId: "gold-hub-b2f1d"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+
+  // ---- TRACK CONNECTIONS (for players online count) ----
+  const connectionsRef = db.ref("connections");
+  const connectedRef = db.ref(".info/connected");
+
+  connectedRef.on("value", snap => {
+    if (snap.val() === true) {
+      const con = connectionsRef.push(true);
+      con.onDisconnect().remove();
+    }
+  });
+</script>
 
 <script>
 const searchInput = document.getElementById('search');
