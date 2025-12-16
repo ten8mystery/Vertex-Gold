@@ -63,22 +63,21 @@
       animation: shine 6s linear infinite;
     }
 
-.nav a button {
-  background: linear-gradient(135deg, var(--gold-1), var(--gold-3));
-  border: none;
-  padding: 12px 22px;
-  border-radius: 14px;
-  font-weight: 800;
-  cursor: pointer;
-  box-shadow: 0 0 35px rgba(255,215,120,.45);
-  transition: transform .25s, box-shadow .25s;
-}
+    .nav a button {
+      background: linear-gradient(135deg, var(--gold-1), var(--gold-3));
+      border: none;
+      padding: 12px 22px;
+      border-radius: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 0 35px rgba(255,215,120,.45);
+      transition: transform .25s, box-shadow .25s;
+    }
 
-.nav a button:hover {
-  transform: translateY(-2px) scale(1.03);
-  box-shadow: 0 0 65px rgba(255,215,120,.8);
-}
-
+    .nav a button:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 0 65px rgba(255,215,120,.8);
+    }
 
     .hero {
       max-width: 1300px;
@@ -141,7 +140,6 @@
       cursor: pointer;
     }
 
-    /* ===== HERO CARD (SOFTER ANIMATION) ===== */
     .hero-card {
       position: relative;
       background: linear-gradient(180deg, #171104, #090909);
@@ -197,7 +195,6 @@
       z-index: 1;
     }
 
-    /* Particles canvas */
     #particles {
       position: fixed;
       inset: 0;
@@ -205,14 +202,92 @@
       pointer-events: none;
     }
 
+    /* ===== POPUP ===== */
+    #popup-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      backdrop-filter: blur(10px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #popup-box {
+      position: relative;
+      background: linear-gradient(180deg, #171104, #090909);
+      border: 1px solid rgba(255,215,120,.25);
+      border-radius: 24px;
+      padding: 36px 40px;
+      width: min(420px, 90%);
+      box-shadow:
+        0 0 60px rgba(255,215,120,.35),
+        0 30px 90px rgba(0,0,0,.9);
+      text-align: center;
+    }
+
+    #popup-box h2 {
+      color: var(--gold-1);
+      margin-bottom: 12px;
+    }
+
+    #popup-box p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    #popup-close {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      background: none;
+      border: none;
+      color: var(--gold-1);
+      font-size: 1.2rem;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    #popup-close:hover { color: #fff; }
+
+    /* ===== Discord Button ===== */
+    #discord-btn {
+      margin-top: 20px;
+      background-color: #5865F2; /* Discord blurple */
+      border: none;
+      color: #fff;
+      font-weight: 700;
+      padding: 12px 24px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    #discord-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(88,101,242,0.5), 0 0 40px rgba(88,101,242,0.3);
+    }
+
     @keyframes shine { to { background-position: 200% center; } }
     @keyframes spin { to { transform: rotate(360deg); } }
   </style>
 </head>
-
 <body>
-
 <canvas id="particles"></canvas>
+
+<!-- POPUP -->
+<div id="popup-overlay">
+  <div id="popup-box">
+    <button id="popup-close">✕</button>
+    <h2>Welcome to Vertex Gold</h2>
+    <p>Hey! Welcome to my games site! I would appreciate it if you joined the discord. Thanks!</p>
+    <a href="https://discord.gg/YOUR_SERVER" target="_blank">
+      <button id="discord-btn">Join the Discord</button>
+    </a>
+  </div>
+</div>
 
 <header>
   <div class="nav">
@@ -225,7 +300,6 @@
     </div>
   </div>
 </header>
-
 <section class="hero">
   <div>
     <h1>Vertex<br>Gold</h1>
@@ -239,7 +313,7 @@
   <div class="hero-card">
     <h3>Live Platform Stats</h3>
     <div class="stat"><span>Games Available</span><strong>128</strong></div>
-    <div class="stat"><span>Players Online</span><strong>15</strong></div>
+    <div class="stat"><span>Players Online</span><strong id="players-count">0</strong></div>
     <div class="stat"><span>Status</span><strong>Online</strong></div>
   </div>
 </section>
@@ -298,7 +372,6 @@
     }
   }
 </script>
-
 <script>
 // ===== Networked particles with mouse interaction =====
 const canvas = document.getElementById("particles");
@@ -398,8 +471,13 @@ function animateParticles() {
 
 initParticles();
 animateParticles();
+
+// ===== Popup close functionality =====
+const popup = document.getElementById("popup-overlay");
+document.getElementById("popup-close").onclick = () => {
+  popup.style.display = "none";
+};
 </script>
 
 </body>
 </html>
-
