@@ -5,34 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vertex Gold – Apps</title>
   <link rel="icon" type="image/png" href="images/favicon.png">
-
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --bg: #050505;
-      --panel: #0d0d0d;
-      --panel-soft: #131313;
-      --gold-1: #ffe08a;
-      --gold-2: #ffbf3f;
-      --gold-3: #cfa335;
       --text: #f5f5f5;
-      --muted: #9b9b9b;
+      --gold-1: #ffe08a;
+      --gold-3: #cfa335;
+      --panel: #0d0d0d;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: Inter, sans-serif; }
 
     body {
       min-height: 100vh;
-      background:
-        radial-gradient(900px 500px at 20% -10%, rgba(255,200,90,.15), transparent 60%),
-        radial-gradient(900px 500px at 80% 0%, rgba(255,200,90,.12), transparent 60%),
-        var(--bg);
+      background: var(--bg);
       color: var(--text);
       overflow-x: hidden;
+      position: relative;
     }
 
-    /* ===== NAV ===== */
+    /* Particles canvas */
+    #particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Content above particles */
+    header, .section, .iframe-overlay {
+      position: relative;
+      z-index: 1;
+    }
+
     header {
       position: sticky;
       top: 0;
@@ -56,7 +66,6 @@
       font-size: 1.7rem;
       letter-spacing: 1px;
       background: linear-gradient(120deg, #fff, var(--gold-1), #fff);
-      background-size: 200% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       animation: shine 6s linear infinite;
@@ -78,7 +87,6 @@
       box-shadow: 0 0 65px rgba(255,215,120,.8);
     }
 
-    /* ===== PAGE ===== */
     .section {
       max-width: 1300px;
       margin: auto;
@@ -109,23 +117,15 @@
       color: var(--text);
       font-size: 1.05rem;
       outline: none;
-      box-shadow: inset 0 0 0 rgba(0,0,0,0);
-      transition: border .2s, box-shadow .2s;
     }
 
-    .search-bar input:focus {
-      border-color: var(--gold-1);
-      box-shadow: 0 0 25px rgba(255,215,120,.35);
-    }
-
-    /* ===== GAMES GRID ===== */
     .games {
-  display:grid;
-  grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));
-  gap:26px;
-  padding:40px 22px;
-  max-width:1250px;
-  margin:auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 26px;
+      padding: 40px 22px;
+      max-width: 1250px;
+      margin: auto;
     }
 
     .game {
@@ -136,28 +136,24 @@
       position: relative;
       overflow: hidden;
       transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s;
-      display: flex;
-      flex-direction: column;
+      display: block;
     }
 
     .game::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at top, rgba(255,215,140,.25), transparent 65%);
+      background: radial-gradient(circle at center, rgba(255,215,120,0.25), transparent 70%);
       opacity: 0;
       transition: opacity .35s ease;
       pointer-events: none;
     }
 
+    .game:hover::before { opacity: 1; }
     .game:hover {
       transform: translateY(-12px) scale(1.04);
-      box-shadow:
-        0 30px 70px rgba(0,0,0,.9),
-        0 0 80px rgba(255,215,120,.45);
+      box-shadow: 0 30px 70px rgba(0,0,0,.9), 0 0 60px rgba(255,215,120,.45);
     }
-
-    .game:hover::before { opacity: 1; }
 
     .thumb {
       width: 100%;
@@ -205,11 +201,10 @@
     }
 
     .play:hover {
-      transform: translateY(-2px);
+      transform: translateY(-2px) scale(1.05);
       box-shadow: 0 0 55px rgba(255,215,120,.75);
     }
 
-    /* ===== IFRAME OVERLAY ===== */
     .iframe-overlay {
       display: none;
       position: fixed;
@@ -247,13 +242,13 @@
     }
 
     @keyframes shine { to { background-position: 200% center; } }
-
-    @media (max-width: 900px) {
-      .section { padding-top: 70px; }
-    }
   </style>
 </head>
+
 <body>
+
+<!-- Particles canvas -->
+<canvas id="particles"></canvas>
 
 <header>
   <div class="nav">
@@ -269,11 +264,9 @@
 
 <section class="section">
   <h1>Select an App</h1>
-
   <div class="search-bar">
     <input type="text" id="search" placeholder="Search games...">
   </div>
-
   <div class="games" id="gameList"></div>
 </section>
 
@@ -282,58 +275,200 @@
     <button id="closeBtn">Close ✕</button>
     <button id="fullscreenBtn">Fullscreen ⛶</button>
   </div>
-  <iframe id="gameFrame" sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+  <iframe id="gameFrame" allow="fullscreen; autoplay; gamepad; pointer-lock"></iframe>
 </div>
 
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
 <script>
-  const searchInput = document.getElementById('search');
-  const gameList = document.getElementById('gameList');
-  const overlay = document.getElementById('iframeOverlay');
-  const iframe = document.getElementById('gameFrame');
-  const closeBtn = document.getElementById('closeBtn');
-  const fullscreenBtn = document.getElementById('fullscreenBtn');
-
-  fetch('https://raw.githubusercontent.com/ten8mystery/Vertex-Gold/main/data/apps.json')
-    .then(res => res.json())
-    .then(data => {
-      data.forEach(game => {
-        const card = document.createElement('div');
-        card.className = 'game';
-        card.dataset.name = game.name;
-        card.innerHTML = `
-          <div class="thumb"><img src="${game.image}" alt="${game.name}"></div>
-          <h3>${game.name}</h3>
-          <button class="play">Play</button>
-        `;
-        gameList.appendChild(card);
-
-        card.querySelector('.play').addEventListener('click', () => {
-          iframe.srcdoc = '';
-          fetch(game.src).then(r => r.text()).then(html => iframe.srcdoc = html);
-          overlay.style.display = 'flex';
-        });
-      });
-    });
-
-  searchInput.addEventListener('input', () => {
-    const q = searchInput.value.toLowerCase();
-    document.querySelectorAll('.game').forEach(g => {
-      g.style.display = g.dataset.name?.toLowerCase().includes(q) ? 'block' : 'none';
-    });
-  });
-
-  closeBtn.onclick = () => { overlay.style.display = 'none'; iframe.srcdoc = ''; };
-
-  fullscreenBtn.onclick = () => {
-    const el = iframe;
-    if (el.requestFullscreen) el.requestFullscreen();
-    else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
-    else if (el.msRequestFullscreen) el.msRequestFullscreen();
+  const firebaseConfig = {
+    apiKey: "AIzaSyCMOFM7xg_zTMiLU52F22kQaR101MnNdLs",
+    authDomain: "gold-hub-b2f1d.firebaseapp.com",
+    databaseURL: "https://gold-hub-b2f1d-default-rtdb.firebaseio.com",
+    projectId: "gold-hub-b2f1d"
   };
-
-  overlay.addEventListener('click', e => {
-    if (e.target === overlay) { overlay.style.display = 'none'; iframe.srcdoc = ''; }
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+  const connectionsRef = db.ref("connections");
+  const connectedRef = db.ref(".info/connected");
+  connectedRef.on("value", snap => {
+    if (snap.val() === true) {
+      const con = connectionsRef.push(true);
+      con.onDisconnect().remove();
+    }
   });
+</script>
+
+<script>
+const searchInput = document.getElementById('search');
+const gameList = document.getElementById('gameList');
+const overlay = document.getElementById('iframeOverlay');
+const iframe = document.getElementById('gameFrame');
+const closeBtn = document.getElementById('closeBtn');
+const fullscreenBtn = document.getElementById('fullscreenBtn');
+
+fetch('https://raw.githubusercontent.com/ten8mystery/Vertex-Gold/main/data/apps.json')
+  .then(res => res.json())
+  .then(data => {
+    gameList.innerHTML = '';
+    data.forEach(game => {
+      const card = document.createElement('div');
+      card.className = 'game';
+      card.dataset.name = game.name;
+      card.innerHTML = `
+        <div class="thumb"><img src="${game.image}" alt="${game.name}"></div>
+        <h3>${game.name}</h3>
+        <button class="play">Play</button>
+      `;
+      const playBtn = card.querySelector('.play');
+      playBtn.addEventListener('click', () => {
+        overlay.style.display = 'flex';
+        fetch(game.src)
+          .then(r => r.text())
+          .then(html => {
+            const doc = iframe.contentDocument || iframe.contentWindow.document;
+            doc.open();
+            doc.write(html);
+            doc.close();
+          })
+          .catch(() => {
+            const doc = iframe.contentDocument || iframe.contentWindow.document;
+            doc.open();
+            doc.write(`<h2 style="color:white;padding:20px;">Failed to load game</h2>`);
+            doc.close();
+          });
+      });
+      gameList.appendChild(card);
+    });
+  });
+
+searchInput.addEventListener('input', () => {
+  const q = searchInput.value.toLowerCase();
+  document.querySelectorAll('.game').forEach(g => {
+    g.style.display = g.dataset.name.toLowerCase().includes(q) ? 'block' : 'none';
+  });
+});
+
+closeBtn.onclick = () => {
+  overlay.style.display = 'none';
+  iframe.src = '';
+  iframe.srcdoc = '';
+};
+
+fullscreenBtn.onclick = () => {
+  if (iframe.requestFullscreen) iframe.requestFullscreen();
+};
+
+overlay.addEventListener('click', e => {
+  if (e.target === overlay) {
+    overlay.style.display = 'none';
+    iframe.src = '';
+    iframe.srcdoc = '';
+  }
+});
+</script>
+
+<script>
+// ===== Networked particles with mouse interaction =====
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+let particlesArray = [];
+const particleCount = 80;
+const lineDistance = 120;
+let mouse = { x: null, y: null };
+
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+canvas.addEventListener('mousemove', e => {
+  mouse.x = e.x;
+  mouse.y = e.y;
+});
+
+canvas.addEventListener('mouseleave', () => {
+  mouse.x = null;
+  mouse.y = null;
+});
+
+class Particle {
+  constructor() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.size = Math.random() * 2 + 1;
+    this.speedX = (Math.random() - 0.5) * 0.5;
+    this.speedY = (Math.random() - 0.5) * 0.5;
+    this.color = 'rgba(255,200,90,0.2)';
+  }
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+
+    if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+    if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+
+    // Move slightly toward mouse
+    if (mouse.x && mouse.y) {
+      const dx = mouse.x - this.x;
+      const dy = mouse.y - this.y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if (dist < 100) {
+        this.x -= dx*0.005;
+        this.y -= dy*0.005;
+      }
+    }
+  }
+  draw() {
+    ctx.fillStyle = this.color;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
+    ctx.fill();
+  }
+}
+
+function connectParticles() {
+  for (let a = 0; a < particlesArray.length; a++) {
+    for (let b = a + 1; b < particlesArray.length; b++) {
+      const dx = particlesArray[a].x - particlesArray[b].x;
+      const dy = particlesArray[a].y - particlesArray[b].y;
+      const distance = Math.sqrt(dx*dx + dy*dy);
+      if (distance < lineDistance) {
+        ctx.strokeStyle = `rgba(255,200,90,${1 - distance/lineDistance} )`;
+        ctx.lineWidth = 0.7;
+        ctx.beginPath();
+        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+        ctx.stroke();
+      }
+    }
+  }
+}
+
+function initParticles() {
+  particlesArray = [];
+  for (let i = 0; i < particleCount; i++) {
+    particlesArray.push(new Particle());
+  }
+}
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particlesArray.forEach(p => {
+    p.update();
+    p.draw();
+  });
+  connectParticles();
+  requestAnimationFrame(animateParticles);
+}
+
+initParticles();
+animateParticles();
 </script>
 
 </body>
