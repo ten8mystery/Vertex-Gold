@@ -192,6 +192,18 @@
     "description": "Game Active"
   },
   {
+    "name": "Five Nights at Freddy's 3",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/40.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/40.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Five Nights at Freddy's 4",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/41.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/41.png",
+    "description": "Game Active"
+  },
+  {
     "name": "House of Hazards",
     "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/339.html",
     "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/339.png",
@@ -237,6 +249,24 @@
     "name": "Pokemon Red",
     "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/505.html",
     "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/505.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Retro Bowl",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/33.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/33.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Retro Bowl Collage",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/34.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/34.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Bad Time Simulator",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/472.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/472.png",
     "description": "Game Active"
   }
 ]
