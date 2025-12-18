@@ -330,12 +330,6 @@
     "description": "Game Active"
   },
   {
-    "name": "Cluster Truck",
-    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/81.html",
-    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/81.png",
-    "description": "Game Active"
-  },
-  {
     "name": "Death Run 3D",
     "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/211.html",
     "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/211.png",
@@ -345,12 +339,6 @@
     "name": "Fireboy and Watergirl 2",
     "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/88.html",
     "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/88.png",
-    "description": "Game Active"
-  },
-  {
-    "name": "Fireboy and Watergirl 3",
-    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/89.html",
-    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/80.png",
     "description": "Game Active"
   },
   {
