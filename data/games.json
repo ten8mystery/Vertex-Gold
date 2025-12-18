@@ -348,6 +348,12 @@
     "description": "Game Active"
   },
   {
+    "name": "Rooftop Snipers 2",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/490.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/490.png",
+    "description": "Game Active"
+  },
+  {
     "name": "Riddle School",
     "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/287.html",
     "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/287.png",
@@ -363,6 +369,24 @@
     "name": "Riddle School 3",
     "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/289.html",
     "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/289.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Run 1",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/175.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/175.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Run 2",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/176.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/176.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Run 3",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/177.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/177.png",
     "description": "Game Active"
   }
 ]
