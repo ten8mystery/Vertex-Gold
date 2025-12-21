@@ -309,7 +309,7 @@ const iframe = document.getElementById('gameFrame');
 const closeBtn = document.getElementById('closeBtn');
 const fullscreenBtn = document.getElementById('fullscreenBtn');
 
-fetch('https://raw.githubusercontent.com/ten8mystery/Vertex-Gold/main/data/games.json')
+fetch('data/games.json')
   .then(res => res.json())
   .then(data => {
     gameList.innerHTML = '';
