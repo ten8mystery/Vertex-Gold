@@ -3,173 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gemini AI // GOLD</title>
+    <title>Gemini AI // 2025 GOLD</title>
     <style>
-        /* --- GOLD THEME CSS --- */
         :root {
-            --bg-dark: #050505;
-            --bg-panel: rgba(20, 20, 20, 0.6);
-            --gold-primary: #FFD700;
-            --gold-dim: #B8860B;
-            --gold-glow: rgba(255, 215, 0, 0.3);
-            --text-main: #fff;
+            --bg-dark: #0a0a0a;
+            --bg-panel: rgba(28, 28, 28, 0.85);
+            --gold-primary: #f0c24d; /* Softer, richer gold */
+            --gold-accent: #d4af37;
+            --gold-glow: rgba(240, 194, 77, 0.2);
+            --text-main: #ffffff;
+            --text-dim: #cccccc;
         }
 
         body {
-            background: radial-gradient(circle at center, #1a1200, var(--bg-dark));
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 0% 0%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
             color: var(--text-main);
             height: 100vh;
             margin: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px; /* Base font size increased */
-        }
-
-        /* Glass Container */
-        .glass-panel {
-            width: 95%;
-            max-width: 1000px; /* Wider */
-            height: 90vh;      /* Taller */
-            background: var(--bg-panel);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 2px solid rgba(255, 215, 0, 0.2); /* Gold border */
-            border-radius: 30px;
-            box-shadow: 0 0 50px rgba(0, 0, 0, 0.8), 0 0 15px var(--gold-dim);
-            display: flex;
-            flex-direction: column;
             overflow: hidden;
         }
 
-        /* Header */
+        .glass-panel {
+            width: 90%;
+            max-width: 1100px;
+            height: 85vh;
+            background: var(--bg-panel);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(240, 194, 77, 0.3);
+            border-radius: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
         header {
-            padding: 30px;
-            border-bottom: 2px solid rgba(255, 215, 0, 0.1);
+            padding: 40px 20px 20px;
             text-align: center;
         }
 
         h1 {
-            font-size: 2.5rem; /* Huge Header */
+            font-size: 3rem;
             margin: 0;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            background: linear-gradient(to bottom, #FFF, var(--gold-primary));
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #fff 30%, var(--gold-primary) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 20px var(--gold-glow);
         }
 
-        /* Chat Area */
         #chat-window {
             flex: 1;
-            padding: 40px; /* More padding */
+            padding: 20px 60px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 25px; /* More space between messages */
+            gap: 30px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--gold-accent) transparent;
         }
 
         .message {
-            max-width: 85%;
-            padding: 20px 25px; /* Bigger bubbles */
-            border-radius: 20px;
-            line-height: 1.6;
-            font-size: 1.1rem; /* Bigger text */
-            animation: fadeIn 0.4s ease;
+            max-width: 80%;
+            padding: 25px 35px;
+            border-radius: 30px;
+            line-height: 1.7;
+            font-size: 1.3rem; /* Extra large text */
+            animation: slideUp 0.4s ease-out;
         }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         .user-msg {
             align-self: flex-end;
-            background: linear-gradient(135deg, var(--gold-dim), #8a6e03);
-            color: white;
-            border: 1px solid var(--gold-primary);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            border-bottom-right-radius: 4px;
+            background: var(--gold-primary);
+            color: #000;
+            font-weight: 500;
+            border-bottom-right-radius: 5px;
         }
 
         .ai-msg {
             align-self: flex-start;
             background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            color: #ececec;
-            border-bottom-left-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-dim);
+            border-bottom-left-radius: 5px;
         }
 
-        /* Input Area */
         .input-area {
-            padding: 30px;
-            background: rgba(0, 0, 0, 0.4);
+            padding: 40px 60px;
             display: flex;
             gap: 20px;
-            align-items: center;
+            background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
+            border-radius: 0 0 40px 40px;
         }
 
         textarea {
             flex: 1;
-            background: rgba(0, 0, 0, 0.3);
-            border: 2px solid rgba(255, 215, 0, 0.2);
-            border-radius: 15px;
-            color: var(--gold-primary);
-            padding: 20px;
-            font-size: 1.1rem;
-            font-family: inherit;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(240, 194, 77, 0.2);
+            border-radius: 20px;
+            color: white;
+            padding: 25px;
+            font-size: 1.2rem;
+            height: 50px;
             resize: none;
-            height: 60px;
             outline: none;
             transition: 0.3s;
         }
-        textarea:focus { 
-            border-color: var(--gold-primary); 
-            box-shadow: 0 0 20px var(--gold-glow); 
-            background: rgba(0, 0, 0, 0.6);
-        }
+
+        textarea:focus { border-color: var(--gold-primary); background: rgba(255,255,255,0.08); }
 
         button {
-            background: linear-gradient(to bottom, var(--gold-primary), var(--gold-dim));
+            background: var(--gold-primary);
             color: #000;
             border: none;
-            padding: 0 40px;
-            height: 60px;
-            border-radius: 15px;
+            padding: 0 50px;
+            border-radius: 20px;
             font-size: 1.2rem;
-            font-weight: bold;
+            font-weight: 700;
             cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: all 0.3s;
-            box-shadow: 0 0 15px var(--gold-glow);
+            transition: 0.3s;
         }
-        button:hover {
-            transform: scale(1.05);
-            filter: brightness(1.2);
-        }
-        
-        /* Markdown Styling */
+
+        button:hover { transform: translateY(-3px); box-shadow: 0 10px 20px var(--gold-glow); }
+        button:active { transform: translateY(0); }
+
         strong { color: var(--gold-primary); }
-        code { background: #222; padding: 4px 8px; border: 1px solid #444; color: var(--gold-primary); font-family: monospace;}
     </style>
 </head>
 <body>
 
     <div class="glass-panel">
         <header>
-            <h1>⚜️ Gold AI ⚜️</h1>
+            <h1>GEMINI 3.0 GOLD</h1>
         </header>
 
         <div id="chat-window">
             <div class="message ai-msg">
-                <strong>Welcome!</strong><br>
-                Please give your question below!
+                <strong>Greetings.</strong><br>
+                The 2025 Golden Neural Core is online. Everything is tuned for maximum performance and clarity. What shall we create?
             </div>
         </div>
 
         <div class="input-area">
-            <textarea id="prompt" placeholder="Enter your query..." onkeydown="if(event.key === 'Enter' && !event.shiftKey) { event.preventDefault(); runGemini(); }"></textarea>
-            <button id="sendBtn" onclick="runGemini()">Send</button>
+            <textarea id="prompt" placeholder="Message the AI..." onkeydown="if(event.key === 'Enter' && !event.shiftKey) { event.preventDefault(); runGemini(); }"></textarea>
+            <button id="sendBtn" onclick="runGemini()">SEND</button>
         </div>
     </div>
 
@@ -185,7 +171,6 @@
       import { GoogleGenerativeAI } from "@google/generative-ai";
 
       // ---------------------------------------------------------
-      // 👇 PASTE YOUR API KEY INSIDE THE QUOTES BELOW 👇
       const API_KEY = "AIzaSyBWbOfXOD3RQyyxIIOC-_3CgR1hVmunx_k"; 
       // ---------------------------------------------------------
 
@@ -197,43 +182,34 @@
         const sendBtn = document.getElementById('sendBtn');
         const userText = promptInput.value.trim();
 
-        if (API_KEY === "PASTE_YOUR_API_KEY_HERE" || API_KEY === "") {
-            alert("⚠️ Please open the HTML file in a text editor and paste your API Key where it says 'PASTE_YOUR_API_KEY_HERE'");
+        if (API_KEY === "PASTE_YOUR_API_KEY_HERE") {
+            alert("Please paste your API Key in the code first!");
             return;
         }
-
         if (!userText) return;
 
-        // UI Updates
         promptInput.value = '';
-        sendBtn.disabled = true;
-        sendBtn.innerText = "WAIT...";
-        
-        // Add User Message
         addMessage(userText, 'user-msg');
 
         try {
-            // Initialize API if not done yet
             if (!genAI) {
                 genAI = new GoogleGenerativeAI(API_KEY);
-                const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+                // UPDATED MODEL NAME FOR 2025
+                const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" }); 
                 chatSession = model.startChat({ history: [] });
             }
 
-            // Send Message
             const result = await chatSession.sendMessage(userText);
             const response = await result.response;
             const text = response.text();
 
-            // Add AI Message with Typing Effect
             await typeMessage(text);
 
         } catch (error) {
-            addMessage("❌ Error: " + error.message, 'ai-msg');
+            console.error(error);
+            addMessage("❌ Connection Error: The model name might have changed again or the key is invalid. Details: " + error.message, 'ai-msg');
         } finally {
-            sendBtn.disabled = false;
-            sendBtn.innerText = "SEND";
-            promptInput.focus();
+            document.getElementById('chat-window').scrollTop = 999999;
         }
       }
 
@@ -253,30 +229,22 @@
           chatWindow.appendChild(div);
 
           let i = 0;
-          const speed = 10; 
-
           return new Promise((resolve) => {
               function type() {
                   if (i < text.length) {
                       div.innerHTML = formatText(text.substring(0, i + 1));
                       chatWindow.scrollTop = chatWindow.scrollHeight;
                       i++;
-                      setTimeout(type, Math.random() * speed + 5); 
-                  } else {
-                      resolve();
-                  }
+                      setTimeout(type, 5); 
+                  } else { resolve(); }
               }
               type();
           });
       }
 
       function formatText(text) {
-          return text
-            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-            .replace(/```(.*?)```/gs, '<code>$1</code>')
-            .replace(/\n/g, '<br>');
+          return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
       }
     </script>
-
 </body>
 </html>
