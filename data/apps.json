@@ -22,6 +22,12 @@
     "src": "https://raw.githubusercontent.com/ten8mystery/Diamond-Backend/main/music.html",
     "image": "https://i.ytimg.com/vi/mrm50KbvGnk/maxresdefault.jpg",
     "description": "Game Active"
+  },
+  {
+    "name": "Wish I Knew",
+    "src": "https://raw.githubusercontent.com/ten8mystery/Vertex-Gold/refs/heads/main/data/local/wishiknew.html",
+    "image": "https://i.ytimg.com/vi/-1XlDCRBxxY/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGGggaChoMA8=&rs=AOn4CLBKAP5caGhW_V0FO9SGeUdNDYGgEA",
+    "description": "Game Active"
   }
 ]
 
