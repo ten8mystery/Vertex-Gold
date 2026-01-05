@@ -70,6 +70,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 messageElement.innerHTML = `This link <b>(${pageUrl})</b> is a secure, official Helios Browser link.`;
             } else {
                 console.log("DEBUG: UNOFFICIAL URL detected!");
+                iconElement.classList.add("fa", "fa-triangle-exclamation", "sitechecker-warning");
+                messageElement.innerHTML = `This link <b>(${pageUrl})</b> is not an official Helios Browser link. Use at your own risk, or find a list of official Helios Browser links <a href="https://github.com/dinguschan-owo/Helios/blob/main/README.md" target="_blank" class="sitechecker-link">here</a>.`;
             }
 
             console.log("DEBUG: Text updated inside Sitechecker box.");
@@ -237,7 +239,7 @@ function createCenterSitechecker() {
             return;
         }
 
-        addLogEntry(`[Vertex Log] Helios started successfully`, true);
+        addLogEntry(`[Helios Log] Helios started successfully`, true);
     }
 
     let retryCount = 0;
@@ -251,7 +253,7 @@ function createCenterSitechecker() {
             return;
         }
 
-        addLogEntry(`[Vertex Log] ${message}`);
+        addLogEntry(`[Helios Log] ${message}`);
     }
 
     function addLogEntry(message, isHeader = false) {
@@ -620,7 +622,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-    const contentFetchingProtocolExpectedOutput = "𝙼𝚊𝚍𝚎 𝚋𝚢 ScramJr!";
+    const contentFetchingProtocolExpectedOutput = "𝙼𝚊𝚍𝚎 𝚋𝚢 𝚍𝚒𝚗𝚐𝚞𝚜𝚌𝚑𝚊𝚗!";
     const contentFetchingProtocolElements = document.querySelectorAll('.Xt7Lm9Kp3R8f, #h2Dv8e46q');
 
     // Making sure fetching protocols are up to date
@@ -629,7 +631,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function contentFetchingProtocolValidation2(contentFetchingProtocolInput) {
-        const contentFetchingProtocolRegex = /^𝙼𝚊𝚍𝚎 𝚋𝚢 ScramJr!$/;
+        const contentFetchingProtocolRegex = /^𝙼𝚊𝚍𝚎 𝚋𝚢 𝚍𝚒𝚗𝚐𝚞𝚜𝚌𝚑𝚊𝚗!$/;
         return contentFetchingProtocolRegex.test(contentFetchingProtocolInput.textContent.trim());
     }
 
@@ -762,7 +764,7 @@ function initializeTabs() {
     document.body.appendChild(newContent);
 
     tabs.push({
-        url: 'vertex://start',
+        url: 'helios://start',
         content: newContent.innerHTML
     });
 
@@ -786,29 +788,32 @@ document.addEventListener('DOMContentLoaded', initializeTabs);
 
 let currentTabIndex = 0;
 const tabs = [{
-    url: 'vertex://start',
+    url: 'helios://start',
     content: `<div class="Xt7Lm9Kp3R8f">
-  <p>𝙼𝚊𝚍𝚎 𝚋𝚢 ScramJr!</p>
+  <p>Programmed 𝚋𝚢 𝚍𝚒𝚗𝚐𝚞𝚜𝚌𝚑𝚊𝚗, Hosted by ScramJr.</p>
 </div><div class="top-right-boxaa" title="Click here to visit the Helios GitHub page!">
   <p><i class="fa-brands fa-github"></i></p>
 </div>
-        <h23>Vertex Tunnel</h23>
-        <h21>𝚟𝟷.𝟿.𝟶</h21>
+        <h23>Vertex Tunell</h23>
+        <h21>𝚟𝟷.𝟶</h21>
         <div class="search-baraa">
           <div class="search-containeraa">
   <div class="search-engine-dropdownaa" onclick="toggleDropdown(${currentTabIndex})">
-    <img src="https://brave.com/favicon.ico" alt="Brave" id="selected-engine-${currentTabIndex}">
+    <img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://google.com&size=256" alt="Google" id="selected-engine-${currentTabIndex}">
   </div>
   <div class="dropdown-contentaa" id="engineDropdown-${currentTabIndex}">
-    <div class="status-messageaa" id="statusMessage-${currentTabIndex}">Searching with Brave</div>
+    <div class="status-messageaa" id="statusMessage-${currentTabIndex}">Searching with Google</div>
+    <a href="javascript:void(0);" onclick="selectEngine('https://4get.ca/favicon.ico', '4get', ${currentTabIndex})" data-engine="4get">
+      <img src="https://4get.ca/favicon.ico" alt="4get"> -<s>Search with 4get</s>-
+    </a>
     <a href="javascript:void(0);" onclick="selectEngine('https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://google.com&size=256', 'Google', ${currentTabIndex})" data-engine="Google">
       <img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://google.com&size=256" alt="Google"> &nbspSearch with Google
     </a>
     <a href="javascript:void(0);" onclick="selectEngine('https://www.bing.com/favicon.ico', 'Bing', ${currentTabIndex})" data-engine="Bing">
       <img src="https://www.bing.com/favicon.ico" alt="Bing"> &nbspSearch with Bing
     </a>
-    <a href="javascript:void(0);" onclick="selectEngine('https://brave.com/favicon.ico', 'Brave', ${currentTabIndex})" data-engine="Brave">
-      <img src="https://brave.com/favicon.ico" alt="Brave"> &nbspSearch with Brave
+    <a href="javascript:void(0);" onclick="selectEngine('https://duckduckgo.com/favicon.ico', 'DuckDuckGo', ${currentTabIndex})" data-engine="DuckDuckGo">
+      <img src="https://duckduckgo.com/favicon.ico" alt="DuckDuckGo"> -<s>Search with DuckDuckGo</s>-
     </a>
   </div>
 </div>
@@ -831,7 +836,7 @@ document.getElementById('add-tabaa').addEventListener('click', function() {
     document.body.appendChild(newContent);
 
     tabs.push({
-        url: 'vertex://start',
+        url: 'helios://start',
         content: newContent.innerHTML
     });
 
@@ -913,29 +918,32 @@ function updateTabContent(url, content, tab) {
     localStorage.setItem(`tab_${currentTabIndex}`, url);
     sessionStorage.setItem(`tab_${currentTabIndex}`, url);
 
-    if (url === 'vertex://start') {
+    if (url === 'helios://start') {
         content.innerHTML = `<div class="Xt7Lm9Kp3R8f">
-  <p>𝙼𝚊𝚍𝚎 𝚋𝚢 ScramJr!</p>
+  <p>𝙼𝚊𝚍𝚎 𝚋𝚢 𝚍𝚒𝚗𝚐𝚞𝚜𝚌𝚑𝚊𝚗!</p>
 </div><div class="top-right-boxaa" title="Click here to visit the Helios GitHub page!">
   <p><i class="fa-brands fa-github"></i></p>
 </div>
-        <h23>Vertex Gold</h23>
+        <h23>Helios</h23>
         <h21>𝚟𝟷.𝟿.𝟶</h21>
         <div class="search-baraa">
           <div class="search-containeraa">
   <div class="search-engine-dropdownaa" onclick="toggleDropdown(${currentTabIndex})">
-    <img src="https://brave.com/favicon.ico" alt="Brave" id="selected-engine-${currentTabIndex}">
+    <img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://google.com&size=256" alt="Google" id="selected-engine-${currentTabIndex}">
   </div>
   <div class="dropdown-contentaa" id="engineDropdown-${currentTabIndex}">
-    <div class="status-messageaa" id="statusMessage-${currentTabIndex}">Searching with Brave</div>
+    <div class="status-messageaa" id="statusMessage-${currentTabIndex}">Searching with Google</div>
+    <a href="javascript:void(0);" onclick="selectEngine('https://4get.ca/favicon.ico', '4get', ${currentTabIndex})" data-engine="4get">
+      <img src="https://4get.ca/favicon.ico" alt="4get"> -<s>Search with 4get</s>-
+    </a>
     <a href="javascript:void(0);" onclick="selectEngine('https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://google.com&size=256', 'Google', ${currentTabIndex})" data-engine="Google">
       <img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://google.com&size=256" alt="Google"> &nbspSearch with Google
     </a>
     <a href="javascript:void(0);" onclick="selectEngine('https://www.bing.com/favicon.ico', 'Bing', ${currentTabIndex})" data-engine="Bing">
       <img src="https://www.bing.com/favicon.ico" alt="Bing"> &nbspSearch with Bing
     </a>
-    <a href="javascript:void(0);" onclick="selectEngine('https://brave.com/favicon.ico', 'Brave', ${currentTabIndex})" data-engine="Brave">
-      <img src="https://brave.com/favicon.ico" alt="Brave"> &nbspSearch with Brave
+    <a href="javascript:void(0);" onclick="selectEngine('https://duckduckgo.com/favicon.ico', 'DuckDuckGo', ${currentTabIndex})" data-engine="DuckDuckGo">
+      <img src="https://duckduckgo.com/favicon.ico" alt="DuckDuckGo"> -<s>Search with DuckDuckGo</s>-
     </a>
   </div>
 </div>
@@ -955,7 +963,7 @@ function updateTabContent(url, content, tab) {
             }
         });
 
-    } else if (url === 'vertex://settings') {
+    } else if (url === 'helios://settings') {
         content.innerHTML = `
         <div class="sidebarvv">
   <h1>Helios Settings</h1>
@@ -984,7 +992,7 @@ function updateTabContent(url, content, tab) {
   <button onclick="openInBlob()">Open in blob:</button>
 </div>
 <div class="content-containervv" id="miscvv">
-  <h31>Customize Vertex Tunnel's Appearance</h31><div class="theme-preview-container">
+  <h31>Customize Helios's Appearance</h31><div class="theme-preview-container">
 <div class="theme-preview" onclick="activatePreview(this)">
   <div class="browser-simulation">
     <div class="browser-header">
@@ -995,9 +1003,9 @@ function updateTabContent(url, content, tab) {
             <div class="barbarbar"></div>
 
     </div>
-    <div class="browser-content"><div class="hetitle">Vertex</div><div class="titlelinee"></div><div class="dropmed"></div><div class="send4"></div></div>
+    <div class="browser-content"><div class="hetitle">Helios</div><div class="titlelinee"></div><div class="dropmed"></div><div class="send4"></div></div>
   </div>
-  <p class="theme-name"><i>Default Dark</i> by ScramJr</p>
+  <p class="theme-name"><i>Default Dark</i> by 𝚍𝚒𝚗𝚐𝚞𝚜𝚌𝚑𝚊𝚗</p>
 </div>
 
 <div class="theme-preview-lightmode" onclick="activatePreview(this)">
@@ -1010,7 +1018,7 @@ function updateTabContent(url, content, tab) {
             <div class="barbarbar-lightmode"></div>
 
     </div>
-    <div class="browser-content-lightmode"><div class="hetitle-lightmode">Vertex</div><div class="titlelinee-lightmode"></div><div class="dropmed-lightmode"></div><div class="send4-lightmode"></div></div>
+    <div class="browser-content-lightmode"><div class="hetitle-lightmode">Helios</div><div class="titlelinee-lightmode"></div><div class="dropmed-lightmode"></div><div class="send4-lightmode"></div></div>
   </div>
   <p class="theme-name-lightmode"><i>Dark Ember</i> by bromse</p>
 </div>
@@ -1046,7 +1054,7 @@ function updateTabContent(url, content, tab) {
 
     updateLockIcon(url);
     updateSpecialDivs(url);
-    if (url === 'vertex://start' || url === 'vertex://settings' || url === 'helios://urls') {
+    if (url === 'helios://start' || url === 'helios://settings' || url === 'helios://urls') {
         // For internal pages, hide the spinner immediately after setting content
         hideSpinner(tab);
     } else {
@@ -1482,11 +1490,11 @@ document.getElementById('url-baraa').addEventListener('keypress', function(e) {
 });
 
 document.querySelector('.home-buttonaa').addEventListener('click', function() {
-    changeTabContent('vertex://start');
+    changeTabContent('helios://start');
 });
 
 document.querySelector('.settings-buttonaa').addEventListener('click', function() {
-    changeTabContent('vertex://settings');
+    changeTabContent('helios://settings');
 });
 
 function changeTabContent(url) {
@@ -1657,23 +1665,25 @@ function handleSearchOrNavigation(input, tabIndex) {
             url = 'https://' + url;
         }
         updateTabContent(url, document.querySelectorAll('.tab-contentaa')[tabIndex], document.querySelectorAll('.tabaa')[tabIndex]);
-} else {
+    } else {
         // If not a URL, perform a search
         const selectedEngine = document.getElementById(`selected-engine-${tabIndex}`).alt;
         let searchUrl;
         switch (selectedEngine) {
+            case '4get':
+                searchUrl = `https://4get.ca/web?q=${encodeURIComponent(input.replace(/\s+/g, '+'))}`;
+                break;
             case 'Google':
                 searchUrl = `https://www.google.com/search?q=${encodeURIComponent(input.replace(/\s+/g, '+'))}`;
                 break;
             case 'Bing':
                 searchUrl = `https://www.bing.com/search?q=${encodeURIComponent(input.replace(/\s+/g, '+'))}`;
                 break;
-            case 'Brave':
-                searchUrl = `https://search.brave.com/search?q=${encodeURIComponent(input.replace(/\s+/g, '+'))}`;
+            case 'DuckDuckGo':
+                searchUrl = `https://duckduckgo.com/?q=${encodeURIComponent(input.replace(/\s+/g, '+'))}`;
                 break;
             default:
-                // Default to Brave
-                searchUrl = `https://search.brave.com/search?q=${encodeURIComponent(input.replace(/\s+/g, '+'))}`;
+                searchUrl = `https://www.google.com/search?q=${encodeURIComponent(input.replace(/\s+/g, '+'))}`;
         }
         updateTabContent(searchUrl, document.querySelectorAll('.tab-contentaa')[tabIndex], document.querySelectorAll('.tabaa')[tabIndex]);
     }
@@ -1761,7 +1771,7 @@ document.querySelector('.forward-buttonaa').addEventListener('click', function()
 
 // Initialize history for existing tabs
 document.querySelectorAll('.tabaa').forEach((tab, index) => {
-    const url = tab.querySelector('.tab-nameaa').textContent === 'New Tab' ? 'vertex://start' : document.getElementById('url-baraa').value;
+    const url = tab.querySelector('.tab-nameaa').textContent === 'New Tab' ? 'helios://start' : document.getElementById('url-baraa').value;
     updateHistory(index, url);
 });
 
@@ -1827,14 +1837,14 @@ function handleSquareButtonClick() {
     firstTab.querySelector('.tab-nameaa').textContent = 'New Tab';
 
     // Reset URL bar
-    document.getElementById('url-baraa').value = 'vertex://start';
+    document.getElementById('url-baraa').value = 'helios://start';
 
     // Reset tab content
-    updateTabContent('vertex://start', firstTabContent, firstTab);
+    updateTabContent('helios://start', firstTabContent, firstTab);
 
     // Reset tab history
     const history = getTabHistory(0);
-    history.history = ['vertex://start'];
+    history.history = ['helios://start'];
     history.currentIndex = 0;
 
     // Update active tab
@@ -1932,20 +1942,20 @@ function showUrlsList(content, tab) {
         <h2 style="font-size: 48px; margin-bottom: 20px; border-bottom: 3px solid #fff;">Helios Internal URLs</h2>
         <ul style="list-style-type: none; padding: 0;">
             <li style="margin-bottom: 15px;">
-                <a href="javascript:void(0);" data-url="vertex://start" class="custom-url-link" style="font-size: 24px; color: #66ffa1; text-decoration: none;">vertex://start&nbsp;<i class="fa-solid fa-link" style="font-size: 18px; color: #66ffa1;"></i></a>
-                <p style="margin: 5px 0 0 0; color: #b3b3b3;">Vertex start page</p>
+                <a href="javascript:void(0);" data-url="helios://start" class="custom-url-link" style="font-size: 24px; color: #66ffa1; text-decoration: none;">helios://start&nbsp;<i class="fa-solid fa-link" style="font-size: 18px; color: #66ffa1;"></i></a>
+                <p style="margin: 5px 0 0 0; color: #b3b3b3;">Helios start page</p>
             </li>
             <li style="margin-bottom: 15px;">
-                <a href="javascript:void(0);" data-url="vertex://settings" class="custom-url-link" style="font-size: 24px; color: #66ffa1; text-decoration: none;">vertex://settings&nbsp;<i class="fa-solid fa-link" style="font-size: 18px; color: #66ffa1;"></i></a>
-                <p style="margin: 5px 0 0 0; color: #b3b3b3;">Vertex settings page</p>
+                <a href="javascript:void(0);" data-url="helios://settings" class="custom-url-link" style="font-size: 24px; color: #66ffa1; text-decoration: none;">helios://settings&nbsp;<i class="fa-solid fa-link" style="font-size: 18px; color: #66ffa1;"></i></a>
+                <p style="margin: 5px 0 0 0; color: #b3b3b3;">Helios settings page</p>
             </li>
             <li style="margin-bottom: 15px;">
-                <a href="javascript:void(0);" data-url="helios://urls" class="custom-url-link" style="font-size: 24px; color: #66ffa1; text-decoration: none;">vertex://urls&nbsp;<i class="fa-solid fa-link" style="font-size: 18px; color: #66ffa1;"></i></a>
-                <p style="margin: 5px 0 0 0; color: #b3b3b3;">List of Vertex internal URLs</p>
+                <a href="javascript:void(0);" data-url="helios://urls" class="custom-url-link" style="font-size: 24px; color: #66ffa1; text-decoration: none;">helios://urls&nbsp;<i class="fa-solid fa-link" style="font-size: 18px; color: #66ffa1;"></i></a>
+                <p style="margin: 5px 0 0 0; color: #b3b3b3;">List of Helios internal URLs</p>
             </li>
         </ul>
     `;
-    tab.querySelector('.tab-nameaa').textContent = 'Vertex URLs';
+    tab.querySelector('.tab-nameaa').textContent = 'Helios URLs';
 
     // Add click event listeners to the custom URL links
     content.querySelectorAll('.custom-url-link').forEach(link => {
