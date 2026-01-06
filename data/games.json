@@ -516,6 +516,12 @@
     "description": "Game Active"
   },
   {
+    "name": "Eggy Car",
+    "src": "https://raw.githubusercontent.com/PRXYBOSS101/eggy-car/main/index.html",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6UpUMn-fbvi_6IHUrUYR1eAjPuUZF0b50LA&s",
+    "description": "Game Active"
+  },
+  {
     "name": "Flappy Dunk",
     "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/153.html",
     "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/153.png",
