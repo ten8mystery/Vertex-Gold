@@ -556,6 +556,36 @@
     "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/172.html",
     "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/172.png",
     "description": "Game Active"
+  },
+  {
+    "name": "Ragdoll Archers",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/44.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/44.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Ragdoll Hit",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/44.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/44.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Cut the Rope",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/212.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/212.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Gorilla Tag",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/668.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/668.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Candy Crush",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/171.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/171.png",
+    "description": "Game Active"
   }
 ]
 
