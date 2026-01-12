@@ -586,6 +586,36 @@
     "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/171.html",
     "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/171.png",
     "description": "Game Active"
+  },
+  {
+    "name": "Pizza Tower",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/267.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/267.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Jetpack Joyride",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/7.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/7.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Schoolboy Runaway",
+    "src": "https://raw.githubusercontent.com/Jeremy4401/Schoolboy-Runaway/main/index.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/605.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "WebFishing",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/423.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/423.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Roblox",
+    "src": "https://raw.githubusercontent.com/ax-external/nowggfun-launcher/main/roblox.html",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Roblox_%282025%29_%28App_Icon%29.svg/1024px-Roblox_%282025%29_%28App_Icon%29.svg.png",
+    "description": "Game Active"
   }
 ]
 
