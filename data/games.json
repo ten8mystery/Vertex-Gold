@@ -391,7 +391,7 @@
   },
   {
     "name": "Friday Night Funkin'",
-    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/8-a.html",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/8.html",
     "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/8.png",
     "description": "Game Active"
   },
@@ -669,6 +669,24 @@
     "name": "1v1.LoL",
     "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/58.html",
     "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/58.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Yandere Simulator",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/554.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/554.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Slime Rancher",
+    "src": "https://raw.githubusercontent.com/ten8mystery/Vertex-Gold/main/data/local/zones/Slime%20Rancher.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/591.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Baldi's Basics Plus",
+    "src": "https://raw.githubusercontent.com/ten8mystery/Vertex-Gold/main/data/local/zones/Baldi's%20Basics%20Plus.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/467.png",
     "description": "Game Active"
   }
 ]
