@@ -811,7 +811,7 @@
   },
   {
     "name": "Roblox",
-    "src": "/local/zones/rblx.html",
+    "src": "https://raw.githubusercontent.com/ten8mystery/Vertex-Gold/refs/heads/main/data/local/zones/rblx.html",
     "image": "https://static.wikia.nocookie.net/logopedia/images/d/d6/Roblox_app_icon_2022.svg/",
     "description": "Game Active"
   }
