@@ -20,6 +20,14 @@
   </style>
 </head>
 <body>
-  <iframe src="../pages/unlocker/embed.html#https://www.nowgg.ing/apps/a/19900/b"></iframe>
+  <iframe id="game"></iframe>
+
+  <script>
+    const baseUrl = window.location.origin;
+    const path = "/data/local/pages/unlocker/embed.html";
+    const target = "https://www.nowgg.ing/apps/a/19900/b";
+
+    document.getElementById("game").src = `${baseUrl}${path}#${target}`;
+  </script>
 </body>
 </html>
