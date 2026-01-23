@@ -71,16 +71,33 @@ scramjet.addEventListener("request", async (e) => {
 
         for (let i = 0; i <= MAX_RETRIES; i++) {
             try {
-                return await scramjet.client.fetch(e.url, {
-                    method: e.method,
-                    body: e.body,
-                    headers: e.requestHeaders,
-                    credentials: "include",
-                    mode: e.mode === "cors" ? e.mode : "same-origin",
-                    cache: e.cache,
-                    redirect: "manual",
-                    duplex: "half",
-                });
+const safeHeaders = (() => {
+    try {
+        if (!e.requestHeaders) return {};
+        if (e.requestHeaders instanceof Headers) {
+            return Object.fromEntries(e.requestHeaders.entries());
+        }
+        if (Array.isArray(e.requestHeaders)) {
+            return Object.fromEntries(e.requestHeaders);
+        }
+        if (typeof e.requestHeaders === "object") {
+            return { ...e.requestHeaders };
+        }
+    } catch {}
+    return {};
+})();
+
+return await scramjet.client.fetch(e.url, {
+    method: e.method,
+    body: e.body,
+    headers: safeHeaders,
+    credentials: "include",
+    mode: "cors",
+    cache: "no-store",
+    redirect: "manual",
+    duplex: "half",
+});
+
             } catch (err) {
                 lastErr = err;
                 const errMsg = err.message.toLowerCase();
