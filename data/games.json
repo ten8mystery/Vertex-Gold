@@ -391,7 +391,7 @@
   },
   {
     "name": "Friday Night Funkin'",
-    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/8.html",
+    "src": "https://raw.githubusercontent.com/ten8mystery/Vertex-Gold/refs/heads/main/data/local/zones/fnf.html",
     "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/8.png",
     "description": "Game Active"
   },
@@ -813,6 +813,18 @@
     "name": "Roblox",
     "src": "https://raw.githubusercontent.com/ten8mystery/Vertex-Gold/refs/heads/main/data/local/zones/rblx.html",
     "image": "https://static.wikia.nocookie.net/logopedia/images/d/d6/Roblox_app_icon_2022.svg/",
+    "description": "Game Active"
+  },
+  {
+    "name": "Duck Life 8",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/695.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/695.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Minesweeper Plus",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/604.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/604.png",
     "description": "Game Active"
   }
 ]
