@@ -838,6 +838,18 @@
     "src": "https://raw.githubusercontent.com/ten8mystery/Vertex-Gold/refs/heads/main/data/local/zones/clashroyale.html",
     "image": "https://yt3.googleusercontent.com/Pj9SLzbMxgdbgFSA5MgfTZXjnoRtAj5qUGP8ubjf8AEJpy2nzWLR9Ik__iwQa44bPdvNw5jv5A=s900-c-k-c0x00ffffff-no-rj",
     "description": "Game Active"
+  },
+  {
+    "name": "Epstein Clicker",
+    "src": "https://raw.githubusercontent.com/ten8mystery/Vertex-Gold/refs/heads/main/data/local/zones/epsteinclicker.html",
+    "image": "https://ichef.bbci.co.uk/news/480/cpsprodpb/3ca5/live/b2847ef0-6877-11f0-8dbd-f3d32ebd3327.jpg.webp",
+    "description": "Game Active"
+  },
+  {
+    "name": "Epstein Clicker OG",
+    "src": "https://raw.githubusercontent.com/ten8mystery/Vertex-Gold/refs/heads/main/data/local/zones/epsteinclickerog.html",
+    "image": "https://i.abcnewsfe.com/a/a0813515-e1d3-4fb3-b3f1-3a49e89795f6/epstein-5-ht-gmh-251219_1766184620739_hpMain.jpg",
+    "description": "Game Active"
   }
 ]
 
