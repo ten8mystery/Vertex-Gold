@@ -858,12 +858,6 @@
     "description": "Game Active"
   },
   {
-    "name": "Amaze",
-    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/26.html",
-    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/26.png",
-    "description": "Game Active"
-  },
-  {
     "name": "Pokemon HeartGold",
     "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/696.html",
     "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/696.png",
@@ -957,6 +951,72 @@
     "name": "The World's Hardest Game",
     "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/103.html",
     "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/103.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Nubby's Number Factory",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/517.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/517.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Nubby's Number Factory",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/517.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/517.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Google Baseball",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/257.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/257.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Google Feud",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/361.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/361.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Block Blast",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/6.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/6.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Idle Breakout",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/362.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/362.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Five Nights at Freddy's: World",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/190.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/190.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Poly Track",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/123.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/123.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "World Box",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/174.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/174.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Flappy Bird",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/129.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/129.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "RE:RUN",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/260.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/260.png",
     "description": "Game Active"
   }
 ]
