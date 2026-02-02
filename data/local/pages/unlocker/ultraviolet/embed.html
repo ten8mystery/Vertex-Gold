@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIW Gateway</title>
+    <style>
+        :root {
+            --gold: #d4af37;
+            --bg: #0a0a0a;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            overflow: hidden;
+            color: white;
+        }
+
+        /* Ambient background glow */
+        .bg-glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(0,0,0,0) 70%);
+            z-index: 0;
+        }
+
+        .container {
+            z-index: 1;
+            text-align: center;
+            transition: opacity 0.8s ease;
+        }
+
+        /* Logo Scaling */
+        .logo {
+            width: 80vw;
+            max-width: 450px;
+            height: auto;
+            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.3));
+            margin-bottom: 30px;
+        }
+
+        /* Minimal Loader */
+        .status-text {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: var(--gold);
+            opacity: 0.8;
+            margin-top: 20px;
+        }
+
+        .loader-bar {
+            width: 200px;
+            height: 1px;
+            background: rgba(212, 175, 55, 0.2);
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .loader-progress {
+            position: absolute;
+            width: 40%;
+            height: 100%;
+            background: var(--gold);
+            box-shadow: 0 0 10px var(--gold);
+            animation: slide 1.5s infinite ease-in-out;
+        }
+
+        @keyframes slide {
+            0% { left: -40%; }
+            100% { left: 110%; }
+        }
+
+        /* Hidden Form for UV Logic */
+        #uv-form { display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow"></div>
+
+    <div class="container" id="gateway-ui">
+        <img src="logo.gif" alt="Logo" class="logo">
+        
+        <div id="active-content" style="display: none;">
+            <div class="loader-bar"><div class="loader-progress"></div></div>
+            <div class="status-text">Establishing Secure Connection</div>
+        </div>
+
+        <div id="idle-content">
+            <div class="status-text" style="color: #444;">No Destination Provided</div>
+        </div>
+    </div>
+
+    <form id="uv-form">
+        <input id="uv-search-engine" value="https://www.google.com/search?q=%s" type="hidden"/> 
+        <input id="uv-address" type="text" />
+    </form>
+
+    <script src="uv/uv.bundle.js" defer></script>
+    <script src="uv/uv.config.js" defer></script>
+    <script src="register-sw.js" defer></script>
+    <script src="search.js" defer></script>
+    <script src="index.js" defer></script>
+
+    <script>
+        window.addEventListener('load', () => {
+            const query = window.location.search.substring(1);
+            const activeUI = document.getElementById('active-content');
+            const idleUI = document.getElementById('idle-content');
+            const addressInput = document.getElementById('uv-address');
+            const form = document.getElementById('uv-form');
+
+            // Only trigger if '?' contains a valid-looking URL or search
+            if (query && query.length > 3) {
+                idleUI.style.display = 'none';
+                activeUI.style.display = 'block';
+
+                // Decode and clean the URL
+                const targetUrl = decodeURIComponent(query);
+                addressInput.value = targetUrl;
+
+                // Small delay to allow UV scripts to fully initialize
+                setTimeout(() => {
+                    form.dispatchEvent(new Event('submit'));
+                }, 500);
+            } else {
+                // If no '?' is added, we stay on the "No Destination" screen
+                idleUI.style.display = 'block';
+                activeUI.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

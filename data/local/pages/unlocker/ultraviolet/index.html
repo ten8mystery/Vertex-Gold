@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gold Viewer</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --gold-primary: #d4af37;
+            --gold-light: #f1d592;
+            --gold-gradient: linear-gradient(135deg, #d4af37 0%, #f1d592 100%);
+            --bg-dark: #0a0a0a;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
+            color: #fff;
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Main Container */
+        #content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        /* The BIG Logo Styling */
+        .main-logo-container {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .main-logo-container img {
+            width: 100%;
+            max-width: 500px; /* Increased size significantly */
+            height: auto;
+            filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.4));
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .main-logo-container img:hover {
+            transform: scale(1.03);
+        }
+
+        /* Hero Text */
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            margin-top: 10px;
+            margin-bottom: 50px;
+        }
+
+        /* Modern Search Bar */
+        #uv-form {
+            width: 100%;
+            max-width: 650px;
+        }
+
+        .form__input {
+            width: 100%;
+            padding: 20px 30px;
+            background: var(--glass-bg);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px; /* Slightly more geometric modern look */
+            color: #fff;
+            font-size: 18px;
+            outline: none;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+            backdrop-filter: blur(10px);
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .form__input:focus {
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.15);
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        /* Social Icons */
+        .social-links {
+            margin-top: 50px;
+            display: flex;
+            gap: 30px;
+        }
+
+        .social-links a {
+            font-size: 24px;
+            color: var(--gold-primary);
+            transition: all 0.3s ease;
+            opacity: 0.6;
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+            transform: translateY(-3px);
+            color: #fff;
+        }
+
+        /* Error Message Spacing */
+        .desc {
+            height: 20px;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #ffcc00;
+        }
+
+        /* Footer */
+        #footer {
+            padding: 30px;
+            text-align: center;
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: rgba(212, 175, 55, 0.4);
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="content">
+        <div class="main-logo-container">
+            <img src="logo.gif" alt="TIW Logo">
+        </div>
+
+        <h1>Gold Viewer</h1>
+
+        <form id="uv-form">
+            <input id="uv-search-engine" value="https://www.google.com/search?q=%s" type="hidden"/> 
+            <input id="uv-address" type="text" placeholder="Type a URL or search freely..." class="form__input"/>
+        </form>
+
+        <div class="desc">
+            <p id="uv-error"></p>
+            <pre id="uv-error-code"></pre>
+        </div>
+
+    <div id="footer">
+        <p>&copy; 2026 Ore Gaming • Static UV</p>
+    </div>
+
+    <script src="uv/uv.bundle.js" defer></script>
+    <script src="uv/uv.config.js" defer></script>
+    <script src="register-sw.js" defer></script>
+    <script src="search.js" defer></script>
+    <script src="index.js" defer></script>
+    <script src="error.js" defer></script>
+
+</body>
+</html>
