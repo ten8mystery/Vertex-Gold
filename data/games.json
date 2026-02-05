@@ -67,7 +67,7 @@
   },
   {
     "name": "Buckshot Roulette",
-    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/205.html",
+    "src": "https://raw.githubusercontent.com/ten8mystery/Vertex-Gold/main/data/local/zones/buckshotroulette.html",
     "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/205.png",
     "description": "Game Active"
   },
@@ -786,12 +786,6 @@
     "description": "Game Active"
   },
   {
-    "name": "Roblox",
-    "src": "https://raw.githubusercontent.com/ten8mystery/Vertex-Gold/refs/heads/main/data/local/zones/rblx.html",
-    "image": "https://static.wikia.nocookie.net/logopedia/images/d/d6/Roblox_app_icon_2022.svg/",
-    "description": "Game Active"
-  },
-  {
     "name": "Duck Life 8",
     "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/695.html",
     "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/695.png",
@@ -810,12 +804,6 @@
     "description": "Game Active"
   },
   {
-    "name": "Clash Royale",
-    "src": "https://raw.githubusercontent.com/ten8mystery/Vertex-Gold/refs/heads/main/data/local/zones/clashroyale.html",
-    "image": "https://yt3.googleusercontent.com/Pj9SLzbMxgdbgFSA5MgfTZXjnoRtAj5qUGP8ubjf8AEJpy2nzWLR9Ik__iwQa44bPdvNw5jv5A=s900-c-k-c0x00ffffff-no-rj",
-    "description": "Game Active"
-  },
-  {
     "name": "Epstein Clicker",
     "src": "https://raw.githubusercontent.com/ten8mystery/Vertex-Gold/refs/heads/main/data/local/zones/epsteinclicker.html",
     "image": "https://i.abcnewsfe.com/a/a0813515-e1d3-4fb3-b3f1-3a49e89795f6/epstein-5-ht-gmh-251219_1766184620739_hpMain.jpg",
@@ -824,7 +812,7 @@
   {
     "name": "Epstein Clicker OG",
     "src": "https://raw.githubusercontent.com/ten8mystery/Vertex-Gold/refs/heads/main/data/local/zones/epsteinclickerog.html",
-    "image": "https://cdn.openart.ai/stable_diffusion/b2e0bfd3f0193a2de35ade50f702aee8eb782edf_2000x2000.webp",
+    "image": "https://i.abcnewsfe.com/a/952b4f04-c0ea-4c90-9700-bd9f0e4eb9f9/epstein-9-ht-gmh-251218._1766081526464_hpMain.jpg",
     "description": "Game Active"
   },
   {
@@ -1111,7 +1099,7 @@
   },
   {
     "name": "Adventure Capatalist",
-    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/354.html",
+    "src": "https://raw.githubusercontent.com/ten8mystery/Vertex-Gold/refs/heads/main/data/local/zones/adventurecapatalist.html",
     "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/354.png",
     "description": "Game Active"
   },
