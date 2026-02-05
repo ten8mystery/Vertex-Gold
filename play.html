@@ -129,24 +129,37 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform .4s ease;
     }
+    
+        .game:hover .thumb img { transform: scale(1.08); }
+
 
     .game h3 {
       color: var(--gold-1);
       margin-bottom: 14px;
     }
 
+
     .play {
+      margin-top: auto;
       width: 100%;
+      background: linear-gradient(135deg, var(--gold-1), var(--gold-3));
+      border: none;
       padding: 14px;
       border-radius: 18px;
       font-weight: 900;
-      border: none;
       cursor: pointer;
-      background: linear-gradient(135deg, var(--gold-1), var(--gold-3));
+      box-shadow: 0 0 30px rgba(255,215,120,.45);
+      transition: transform .2s, box-shadow .2s;
+      position: relative;
+      z-index: 1;
     }
-
-    /* ===== IFRAME OVERLAY ===== */
+    
+        .play:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 0 55px rgba(255,215,120,.75);
+    }
 
     .iframe-overlay {
       display: none;
@@ -226,7 +239,6 @@
   </div>
   <div id="iframeContainer"></div>
 </div>
-<!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
@@ -252,7 +264,6 @@
 </script>
 
 <script>
-/* ===== CORE GAME / IFRAME LOGIC ===== */
 
 const searchInput = document.getElementById('search');
 const gameList = document.getElementById('gameList');
@@ -263,7 +274,6 @@ const iframeContainer = document.getElementById('iframeContainer');
 
 let currentIframe = null;
 
-/* ALWAYS create a fresh iframe (Ruffle-safe) */
 function createFreshIframe() {
   iframeContainer.innerHTML = '';
 
@@ -275,14 +285,12 @@ function createFreshIframe() {
   return iframe;
 }
 
-/* Priority games */
 const priorityGames = [
   "[!] REQUEST GAME",
   "R0blox",
   "F0rtnite"
 ];
 
-/* Load games */
 fetch('https://raw.githubusercontent.com/ten8mystery/Vertex-Gold/main/data/games.json')
   .then(res => res.json())
   .then(data => {
@@ -333,7 +341,6 @@ fetch('https://raw.githubusercontent.com/ten8mystery/Vertex-Gold/main/data/games
     });
   });
 
-/* Search */
 searchInput.addEventListener('input', () => {
   const q = searchInput.value.toLowerCase();
   document.querySelectorAll('.game').forEach(g => {
@@ -341,7 +348,6 @@ searchInput.addEventListener('input', () => {
   });
 });
 
-/* Controls */
 closeBtn.onclick = () => {
   overlay.style.display = 'none';
   iframeContainer.innerHTML = '';
@@ -360,7 +366,6 @@ overlay.addEventListener('click', e => {
 </script>
 
 <script>
-/* ===== PARTICLES (FIXED, NO CRASH) ===== */
 
 const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
