@@ -25,19 +25,18 @@
       overflow-x: hidden;
       position: relative;
     }
+    
+    .game:hover::before { opacity: 1; } .game:hover { transform: translateY(-12px) scale(1.04); box-shadow: 0 30px 70px rgba(0,0,0,.9), 0 0 60px rgba(255,215,120,.45); }
+    
+    .game::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at center, rgba(255,215,120,0.25), transparent 70%); opacity: 0; transition: opacity .35s ease; pointer-events: none; }
 
-    /* Particles canvas */
     #particles {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
+      inset: 0;
       z-index: 0;
       pointer-events: none;
     }
 
-    /* Content above particles */
     header, .section, .iframe-overlay {
       position: relative;
       z-index: 1;
@@ -64,27 +63,18 @@
     .logo {
       font-weight: 900;
       font-size: 1.7rem;
-      letter-spacing: 1px;
-      background: linear-gradient(120deg, #fff, var(--gold-1), #fff);
+      background: linear-gradient(120deg, #fff, var(--gold-1));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: shine 6s linear infinite;
     }
 
-    .nav a button {
+    .nav button {
       background: linear-gradient(135deg, var(--gold-1), var(--gold-3));
       border: none;
       padding: 12px 22px;
       border-radius: 14px;
       font-weight: 800;
       cursor: pointer;
-      box-shadow: 0 0 35px rgba(255,215,120,.45);
-      transition: transform .25s, box-shadow .25s;
-    }
-
-    .nav a button:hover {
-      transform: translateY(-2px) scale(1.03);
-      box-shadow: 0 0 65px rgba(255,215,120,.8);
     }
 
     .section {
@@ -116,7 +106,6 @@
       background: var(--panel);
       color: var(--text);
       font-size: 1.05rem;
-      outline: none;
     }
 
     .games {
@@ -124,36 +113,9 @@
       grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
       gap: 26px;
       padding: 40px 22px;
-      max-width: 1250px;
-      margin: auto;
     }
 
-    .game {
-      background: linear-gradient(180deg, #1a1306, #0b0b0b);
-      border-radius: 30px;
-      padding: 22px 22px 26px;
-      border: 1px solid rgba(255,215,120,.18);
-      position: relative;
-      overflow: hidden;
-      transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s;
-      display: block;
-    }
-
-    .game::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at center, rgba(255,215,120,0.25), transparent 70%);
-      opacity: 0;
-      transition: opacity .35s ease;
-      pointer-events: none;
-    }
-
-    .game:hover::before { opacity: 1; }
-    .game:hover {
-      transform: translateY(-12px) scale(1.04);
-      box-shadow: 0 30px 70px rgba(0,0,0,.9), 0 0 60px rgba(255,215,120,.45);
-    }
+.game { background: linear-gradient(180deg, #1a1306, #0b0b0b); border-radius: 30px; padding: 22px 22px 26px; border: 1px solid rgba(255,215,120,.18); position: relative; overflow: hidden; transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s; display: block; }
 
     .thumb {
       width: 100%;
@@ -161,49 +123,30 @@
       border-radius: 22px;
       overflow: hidden;
       margin-bottom: 18px;
-      box-shadow: 0 0 30px rgba(255,215,120,.25);
-      position: relative;
-      z-index: 1;
     }
 
     .thumb img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform .4s ease;
     }
 
-    .game:hover .thumb img { transform: scale(1.08); }
-
     .game h3 {
-      margin-bottom: 16px;
       color: var(--gold-1);
-      font-size: 1.25rem;
-      font-weight: 800;
-      text-align: center;
-      position: relative;
-      z-index: 1;
+      margin-bottom: 14px;
     }
 
     .play {
-      margin-top: auto;
       width: 100%;
-      background: linear-gradient(135deg, var(--gold-1), var(--gold-3));
-      border: none;
       padding: 14px;
       border-radius: 18px;
       font-weight: 900;
+      border: none;
       cursor: pointer;
-      box-shadow: 0 0 30px rgba(255,215,120,.45);
-      transition: transform .2s, box-shadow .2s;
-      position: relative;
-      z-index: 1;
+      background: linear-gradient(135deg, var(--gold-1), var(--gold-3));
     }
 
-    .play:hover {
-      transform: translateY(-2px) scale(1.05);
-      box-shadow: 0 0 55px rgba(255,215,120,.75);
-    }
+    /* ===== IFRAME OVERLAY ===== */
 
     .iframe-overlay {
       display: none;
@@ -217,37 +160,43 @@
     }
 
     .iframe-controls {
-      margin-bottom: 14px;
+      padding: 14px;
       display: flex;
       gap: 14px;
     }
 
     .iframe-controls button {
-      background: linear-gradient(135deg, var(--gold-1), var(--gold-3));
-      border: none;
       padding: 10px 20px;
       border-radius: 16px;
       font-weight: 800;
-      cursor: pointer;
-      color: #000;
-      box-shadow: 0 0 25px rgba(255,215,120,.45);
-    }
-
-    .iframe-overlay iframe {
-      width: 92%;
-      height: 90%;
       border: none;
-      border-radius: 18px;
-      background: #000;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--gold-1), var(--gold-3));
     }
 
-    @keyframes shine { to { background-position: 200% center; } }
+#iframeContainer {
+  flex: 1;
+  width: 97%;
+  height: 97%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+#iframeContainer iframe {
+  width: 97%;
+  height: 97%;
+  border: none;
+      border-radius: 18px;
+  background: #000;
+}
+
   </style>
 </head>
 
 <body>
 
-<!-- Particles canvas -->
 <canvas id="particles"></canvas>
 
 <header>
@@ -275,7 +224,7 @@
     <button id="closeBtn">Close ✕</button>
     <button id="fullscreenBtn">Fullscreen ⛶</button>
   </div>
-  <iframe id="gameFrame" allow="fullscreen; autoplay; gamepad; pointer-lock"></iframe>
+  <div id="iframeContainer"></div>
 </div>
 <!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
@@ -288,10 +237,12 @@
     databaseURL: "https://goldubgserver-default-rtdb.europe-west1.firebasedatabase.app/",
     projectId: "goldubgserver"
   };
+
   firebase.initializeApp(firebaseConfig);
   const db = firebase.database();
   const connectionsRef = db.ref("connections");
   const connectedRef = db.ref(".info/connected");
+
   connectedRef.on("value", snap => {
     if (snap.val() === true) {
       const con = connectionsRef.push(true);
@@ -301,50 +252,67 @@
 </script>
 
 <script>
+/* ===== CORE GAME / IFRAME LOGIC ===== */
+
 const searchInput = document.getElementById('search');
 const gameList = document.getElementById('gameList');
 const overlay = document.getElementById('iframeOverlay');
-const iframe = document.getElementById('gameFrame');
 const closeBtn = document.getElementById('closeBtn');
 const fullscreenBtn = document.getElementById('fullscreenBtn');
+const iframeContainer = document.getElementById('iframeContainer');
 
-// ----- PRIORITY GAMES (change names to your VIP list) -----
+let currentIframe = null;
+
+/* ALWAYS create a fresh iframe (Ruffle-safe) */
+function createFreshIframe() {
+  iframeContainer.innerHTML = '';
+
+  const iframe = document.createElement('iframe');
+  iframe.allow = 'fullscreen; autoplay; gamepad; pointer-lock';
+
+  iframeContainer.appendChild(iframe);
+  currentIframe = iframe;
+  return iframe;
+}
+
+/* Priority games */
 const priorityGames = [
   "[!] REQUEST GAME",
   "R0blox",
-  "F0rtnite",
-  ""
+  "F0rtnite"
 ];
 
-// Fetch and display games
-fetch('data/games.json')
+/* Load games */
+fetch('https://raw.githubusercontent.com/ten8mystery/Vertex-Gold/main/data/games.json')
   .then(res => res.json())
   .then(data => {
     gameList.innerHTML = '';
 
-    // Sort games: priority first, then alphabetical
     data.sort((a, b) => {
-      const aIndex = priorityGames.indexOf(a.name);
-      const bIndex = priorityGames.indexOf(b.name);
-
-      if (aIndex !== -1 && bIndex !== -1) return aIndex - bIndex; // both priority
-      if (aIndex !== -1) return -1; // only a is priority
-      if (bIndex !== -1) return 1;  // only b is priority
-      return a.name.localeCompare(b.name); // neither priority → alphabetical
+      const ai = priorityGames.indexOf(a.name);
+      const bi = priorityGames.indexOf(b.name);
+      if (ai !== -1 && bi !== -1) return ai - bi;
+      if (ai !== -1) return -1;
+      if (bi !== -1) return 1;
+      return a.name.localeCompare(b.name);
     });
 
     data.forEach(game => {
       const card = document.createElement('div');
       card.className = 'game';
       card.dataset.name = game.name;
+
       card.innerHTML = `
         <div class="thumb"><img src="${game.image}" alt="${game.name}"></div>
         <h3>${game.name}</h3>
         <button class="play">Play</button>
       `;
-      const playBtn = card.querySelector('.play');
-      playBtn.addEventListener('click', () => {
+
+      card.querySelector('.play').addEventListener('click', () => {
         overlay.style.display = 'flex';
+
+        const iframe = createFreshIframe();
+
         fetch(game.src)
           .then(r => r.text())
           .then(html => {
@@ -360,11 +328,12 @@ fetch('data/games.json')
             doc.close();
           });
       });
+
       gameList.appendChild(card);
     });
   });
 
-// Search functionality
+/* Search */
 searchInput.addEventListener('input', () => {
   const q = searchInput.value.toLowerCase();
   document.querySelectorAll('.game').forEach(g => {
@@ -372,27 +341,27 @@ searchInput.addEventListener('input', () => {
   });
 });
 
-// Overlay controls
+/* Controls */
 closeBtn.onclick = () => {
   overlay.style.display = 'none';
-  iframe.src = '';
-  iframe.srcdoc = '';
+  iframeContainer.innerHTML = '';
+  currentIframe = null;
 };
 
 fullscreenBtn.onclick = () => {
-  if (iframe.requestFullscreen) iframe.requestFullscreen();
+  if (currentIframe?.requestFullscreen) {
+    currentIframe.requestFullscreen();
+  }
 };
 
 overlay.addEventListener('click', e => {
-  if (e.target === overlay) {
-    overlay.style.display = 'none';
-    iframe.src = '';
-    iframe.srcdoc = '';
-  }
+  if (e.target === overlay) closeBtn.onclick();
 });
 </script>
+
 <script>
-// ===== Networked particles with mouse interaction =====
+/* ===== PARTICLES (FIXED, NO CRASH) ===== */
+
 const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
 let particlesArray = [];
@@ -400,13 +369,12 @@ const particleCount = 80;
 const lineDistance = 120;
 let mouse = { x: null, y: null };
 
-window.addEventListener('resize', () => {
+function resize() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-});
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
 
 canvas.addEventListener('mousemove', e => {
   mouse.x = e.x;
@@ -425,30 +393,17 @@ class Particle {
     this.size = Math.random() * 2 + 1;
     this.speedX = (Math.random() - 0.5) * 0.5;
     this.speedY = (Math.random() - 0.5) * 0.5;
-    this.color = 'rgba(255,200,90,0.2)';
   }
   update() {
     this.x += this.speedX;
     this.y += this.speedY;
-
     if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
     if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-
-    // Move slightly toward mouse
-    if (mouse.x && mouse.y) {
-      const dx = mouse.x - this.x;
-      const dy = mouse.y - this.y;
-      const dist = Math.sqrt(dx*dx + dy*dy);
-      if (dist < 100) {
-        this.x -= dx*0.005;
-        this.y -= dy*0.005;
-      }
-    }
   }
   draw() {
-    ctx.fillStyle = this.color;
+    ctx.fillStyle = 'rgba(255,200,90,0.25)';
     ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
     ctx.fill();
   }
 }
@@ -458,9 +413,9 @@ function connectParticles() {
     for (let b = a + 1; b < particlesArray.length; b++) {
       const dx = particlesArray[a].x - particlesArray[b].x;
       const dy = particlesArray[a].y - particlesArray[b].y;
-      const distance = Math.sqrt(dx*dx + dy*dy);
-      if (distance < lineDistance) {
-        ctx.strokeStyle = `rgba(255,200,90,${1 - distance/lineDistance} )`;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < lineDistance) {
+        ctx.strokeStyle = `rgba(255,200,90,${1 - dist / lineDistance})`;
         ctx.lineWidth = 0.7;
         ctx.beginPath();
         ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
@@ -478,18 +433,18 @@ function initParticles() {
   }
 }
 
-function animateParticles() {
+function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   particlesArray.forEach(p => {
     p.update();
     p.draw();
   });
   connectParticles();
-  requestAnimationFrame(animateParticles);
+  requestAnimationFrame(animate);
 }
 
 initParticles();
-animateParticles();
+animate();
 </script>
 
 </body>
