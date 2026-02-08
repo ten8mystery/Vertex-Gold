@@ -3,8 +3,7 @@
  */
 
 // Point directly to the root where the file should be moved
-const stockSW = "/uv.sw.js"; 
-
+const stockSW = "/uv-sw.js"; // Note the leading slash!
 /**
  * List of hostnames allowed to run serviceworkers on http
  */
