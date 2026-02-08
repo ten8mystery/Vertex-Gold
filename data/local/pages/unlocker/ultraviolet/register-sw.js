@@ -1,21 +1,14 @@
 "use strict";
 
 /**
- * Distributed with Ultraviolet and compatible with most configurations.
+ * Distributed with Ultraviolet - Optimized for Cloudflare Pages
  */
 
-// The location of your bridge file in the ROOT
 const stockSW = "/uv-sw.js";
-
-/**
- * List of hostnames allowed to run service workers on http (testing)
- */
 const swAllowedHostnames = ["localhost", "127.0.0.1", "0.0.0.0"];
 
-/**
- * Global registration utility
- */
 async function registerSW() {
+    // 1. Check for HTTPS
     if (
         location.protocol !== "https:" &&
         !swAllowedHostnames.includes(location.hostname)
@@ -23,27 +16,17 @@ async function registerSW() {
         throw new Error("Service workers cannot be registered without https.");
     }
 
-    async function registerSW() {
-    const stockSW = "/uv-sw.js";
-    
+    // 2. Register the Worker
     if ("serviceWorker" in navigator) {
-        // Adding a timestamp ensures you get the freshest version of the worker
-        await navigator.serviceWorker.register(stockSW + '?v=' + Date.now(), {
-            scope: __uv$config.prefix,
-        });
-        console.log("Vertex: SW Registered on Cloudflare");
-    }
-}
-
-    if ("serviceWorker" in navigator) {
-        // We only need ONE registration call. 
-        // We use stockSW (/uv-sw.js) and the scope from your config.
-        await navigator.serviceWorker.register(stockSW, {
-            scope: __uv$config.prefix, // This is likely '/s/'
-        }).then((registration) => {
-            console.log("Vertex: Service Worker Active at scope:", registration.scope);
-        }).catch((err) => {
+        try {
+            // We add the timestamp (?v=) to bypass Cloudflare's aggressive caching
+            const registration = await navigator.serviceWorker.register(stockSW + '?v=' + Date.now(), {
+                scope: __uv$config.prefix,
+            });
+            
+            console.log("Vertex: SW Active at scope:", registration.scope);
+        } catch (err) {
             console.error("Vertex: SW Registration failed:", err);
-        });
+        }
     }
 }
