@@ -1,4 +1,4 @@
-/* Service Worker Bridge */
+/* Vertex Gold - Root Service Worker Bridge */
 importScripts('/data/local/pages/unlocker/ultraviolet/uv.bundle.js');
 importScripts('/data/local/pages/unlocker/ultraviolet/uv.config.js');
 importScripts('/data/local/pages/unlocker/ultraviolet/uv.sw.js');
