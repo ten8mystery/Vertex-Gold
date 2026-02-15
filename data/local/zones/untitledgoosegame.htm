@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <base href="https://cdn.jsdelivr.net/gh/web-ports/untitled-goose-game@main/">
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity Web Player | Untitled Goose Game</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <style>
+      /* Full screen setup */
+      body, html { 
+        margin: 0; padding: 0; width: 100%; height: 100%; 
+        background-color: #000; overflow: hidden; 
+        font-family: sans-serif; 
+      }
+
+      /* Clean Minimalist Loader */
+      #custom-loader {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background-color: #111; 
+        display: flex; flex-direction: column;
+        justify-content: center; align-items: center;
+        z-index: 100;
+        transition: opacity 0.5s ease;
+      }
+
+      #loading-text {
+        color: #ffffff !important;
+        font-size: 18px;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        background: none !important; /* Kills rainbow */
+        -webkit-text-fill-color: white !important; /* Kills rainbow */
+      }
+
+      .progress-container {
+        width: 250px;
+        height: 4px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 2px;
+        overflow: hidden;
+      }
+
+      #progress-fill {
+        width: 0%;
+        height: 100%;
+        background: #ffffff;
+        transition: width 0.2s ease;
+      }
+
+      #unity-container { width: 100%; height: 100%; position: absolute; }
+      #unity-canvas { width: 100% !important; height: 100% !important; display: block; }
+    </style>
+  </head>
+  <body>
+
+    <div id="custom-loader">
+      <div id="loading-text">LOADING...</div>
+      <div class="progress-container">
+        <div id="progress-fill"></div>
+      </div>
+    </div>
+
+    <div id="unity-container">
+      <canvas id="unity-canvas" tabindex="-1"></canvas>
+    </div>
+
+    <script>
+      const loadingScreen = document.querySelector("#custom-loader");
+      const loadingText = document.querySelector("#loading-text");
+      const progressFill = document.querySelector("#progress-fill");
+      
+      let loadedBytes = 0;
+      const totalSize = 95.69 * 1024 * 1024;
+
+      async function fetchWithProgress(url) {
+        const response = await fetch(url);
+        const reader = response.body.getReader();
+        let received = 0;
+        let chunks = [];
+
+        while(true) {
+          const {done, value} = await reader.read();
+          if (done) break;
+          chunks.push(value);
+          received += value.length;
+          loadedBytes += value.length;
+          
+          // Update visual bar
+          let percent = Math.min((loadedBytes / totalSize) * 100, 100);
+          progressFill.style.width = percent + "%";
+          loadingText.textContent = `LOADING... ${Math.round(percent)}%`;
+        }
+
+        let body = new Uint8Array(received);
+        let position = 0;
+        for(let chunk of chunks) {
+          body.set(chunk, position);
+          position += chunk.length;
+        }
+        return body.buffer;
+      }
+
+      async function loadGame() {
+        try {
+          // Download and merge files
+          const [dataUrl, wasmUrl] = await Promise.all([
+            Promise.all([1,2,3,4].map(i => fetchWithProgress(`Build/Untitled Goose Game.data.part${i}`)))
+              .then(parts => URL.createObjectURL(new Blob(parts))),
+            Promise.all([1,2].map(i => fetchWithProgress(`Build/Untitled Goose Game.wasm.part${i}`)))
+              .then(parts => URL.createObjectURL(new Blob(parts)))
+          ]);
+
+          const config = {
+            dataUrl: dataUrl,
+            frameworkUrl: "Build/Untitled Goose Game.framework.js",
+            codeUrl: wasmUrl,
+            streamingAssetsUrl: "StreamingAssets",
+            companyName: "House House",
+            productName: "Untitled Goose Game",
+            productVersion: "0.2",
+          };
+
+          // Load Unity Loader Script
+          const script = document.createElement("script");
+          script.src = "Build/Untitled Goose Game.loader.js";
+          script.onload = () => {
+            createUnityInstance(document.querySelector("#unity-canvas"), config, (progress) => {
+              // Final initialization progress
+              if (progress === 1) {
+                loadingText.textContent = "DONE!";
+              }
+            }).then(() => {
+              loadingScreen.style.opacity = "0";
+              setTimeout(() => loadingScreen.remove(), 500);
+            });
+          };
+          document.body.appendChild(script);
+
+        } catch (e) {
+          loadingText.textContent = "ERROR LOADING GAME";
+          console.error(e);
+        }
+      }
+
+      loadGame();
+    </script>
+  </body>
+</html>
