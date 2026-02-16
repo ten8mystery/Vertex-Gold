@@ -6,7 +6,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
   <style>
-    /* EXACT ORIGINAL CSS KEPT BELOW */
     :root {
       --bg: #050505;
       --gold-1: #ffe08a;
@@ -219,7 +218,7 @@
     <div class="search-wrapper">
       <form class="search-box" id="searchForm">
         <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" id="searchInput" placeholder="Search with Scramjet..." autocomplete="off">
+        <input type="text" id="searchInput" placeholder="Search the web..." autocomplete="off">
         <div class="engine-picker">
           <div class="engine-btn active" data-url="https://www.google.com/search?q=">Google</div>
           <div class="engine-btn" data-url="https://search.brave.com/search?q=">Brave</div>
@@ -253,22 +252,17 @@
   <script>
     const $ = s => document.querySelector(s);
     let currentEngine = "https://www.google.com/search?q=";
-
-    // --- NEW SYSTEM LOGIC (Scramjet & Messaging) ---
     
     const nav = url => {
       $('#loader').classList.add('show');
       
-      // Standard Scramjet encoding
       const prefix = window.__scramjet_config?.prefix || '/service/';
       const encodedUrl = prefix + btoa(url).replace(/\//g, '_');
       
-      // Send to parent frame (if used in a hub)
       window.parent?.postMessage({ type: 'navigate', url: encodedUrl }, '*');
       window.location.href = encodedUrl;
     };
 
-    // Engine Switcher
     document.querySelectorAll('.engine-btn').forEach(btn => {
       btn.onclick = () => {
         document.querySelectorAll('.engine-btn').forEach(b => b.classList.remove('active'));
@@ -277,7 +271,6 @@
       };
     });
 
-    // Search Logic
     $('#searchForm').onsubmit = e => {
       e.preventDefault();
       const q = $('#searchInput').value.trim();
@@ -287,7 +280,6 @@
       }
     };
 
-    // Shortcut Delegation (Uses the "shortcuts" localStorage key from your 2nd file)
     $('#shortcuts').onclick = e => {
       const shortcut = e.target.closest('.shortcut[data-url]');
       const addBtn = e.target.closest('#addShortcut');
@@ -310,7 +302,6 @@
     };
 
     function renderCustom() {
-      // Remove previous custom ones to avoid duplicates
       document.querySelectorAll('.custom-shortcut').forEach(e => e.remove());
       const shortcuts = JSON.parse(localStorage.getItem('shortcuts') || '[]');
       const addBtn = $('#addShortcut');
@@ -327,7 +318,6 @@
       });
     }
 
-    // --- ORIGINAL VERTEX UI LOGIC (Particles & Clock) ---
 
     function updateClock() {
       const now = new Date();
@@ -337,7 +327,6 @@
     setInterval(updateClock, 1000);
     updateClock();
 
-    // Particle Animation
     const canvas = $('#particles');
     const ctx = canvas.getContext('2d');
     let particles = [];
@@ -376,3 +365,4 @@
   </script>
 </body>
 </html>
+
