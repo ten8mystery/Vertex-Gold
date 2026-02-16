@@ -1,418 +1,383 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vertex Gold</title>
-  <link rel="icon" type="image/png" href="images/favicon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vertex Gold</title>
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --bg: #050505;
-      --panel: #0d0d0d;
-      --panel-soft: #131313;
-      --gold-1: #ffe08a;
-      --gold-2: #ffbf3f;
-      --gold-3: #cfa335;
-      --text: #f5f5f5;
-      --muted: #9b9b9b;
-    }
+<style>
+:root {
+--bg: #050505;
+--panel: #0d0d0d;
+--panel-soft: #131313;
+--gold-1: #ffe08a;
+--gold-2: #ffbf3f;
+--gold-3: #cfa335;
+--text: #f5f5f5;
+--muted: #9b9b9b;
+}
 
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Inter, sans-serif; }
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: Inter, sans-serif; }
 
-    body {
-      min-height: 100vh;
-      background:
-        radial-gradient(900px 500px at 20% -10%, rgba(255,200,90,.15), transparent 60%),
-        radial-gradient(900px 500px at 80% 0%, rgba(255,200,90,.12), transparent 60%),
-        var(--bg);
-      color: var(--text);
-      display: flex;
-      flex-direction: column;
-      overflow-x: hidden;
-      position: relative;
-    }
+body {
+min-height: 100vh;
+background:
+radial-gradient(900px 500px at 20% -10%, rgba(255,200,90,.15), transparent 60%),
+radial-gradient(900px 500px at 80% 0%, rgba(255,200,90,.12), transparent 60%),
+var(--bg);
+color: var(--text);
+display: flex;
+flex-direction: column;
+overflow-x: hidden;
+position: relative;
+}
 
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(14px);
-      background: rgba(5,5,5,.7);
-      border-bottom: 1px solid rgba(255,215,120,.12);
-    }
+header {
+position: sticky;
+top: 0;
+z-index: 50;
+backdrop-filter: blur(14px);
+background: rgba(5,5,5,.7);
+border-bottom: 1px solid rgba(255,215,120,.12);
+}
 
-    .nav {
-      max-width: 1300px;
-      margin: auto;
-      padding: 18px 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+.nav {
+max-width: 1300px;
+margin: auto;
+padding: 18px 28px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
 
-    .logo {
-      font-weight: 900;
-      font-size: 1.7rem;
-      letter-spacing: 1px;
-      background: linear-gradient(120deg, #fff, var(--gold-1), #fff);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: shine 6s linear infinite;
-    }
+.logo {
+font-weight: 900;
+font-size: 1.7rem;
+letter-spacing: 1px;
+background: linear-gradient(120deg, #fff, var(--gold-1), #fff);
+background-size: 200% auto;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+animation: shine 6s linear infinite;
+}
 
-    .nav a button {
-      background: linear-gradient(135deg, var(--gold-1), var(--gold-3));
-      border: none;
-      padding: 12px 22px;
-      border-radius: 14px;
-      font-weight: 800;
-      cursor: pointer;
-      box-shadow: 0 0 35px rgba(255,215,120,.45);
-      transition: transform .25s, box-shadow .25s;
-    }
+.nav a button {
+background: linear-gradient(135deg, var(--gold-1), var(--gold-3));
+border: none;
+padding: 12px 22px;
+border-radius: 14px;
+font-weight: 800;
+cursor: pointer;
+box-shadow: 0 0 35px rgba(255,215,120,.45);
+transition: transform .25s, box-shadow .25s;
+}
 
-    .nav a button:hover {
-      transform: translateY(-2px) scale(1.03);
-      box-shadow: 0 0 65px rgba(255,215,120,.8);
-    }
+.nav a button:hover {
+transform: translateY(-2px) scale(1.03);
+box-shadow: 0 0 65px rgba(255,215,120,.8);
+}
 
-    .hero {
-      max-width: 1300px;
-      margin: auto;
-      padding: 110px 28px 80px;
-      display: grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 70px;
-      align-items: center;
-      position: relative;
-      z-index: 1;
-    }
+.hero {
+max-width: 1300px;
+margin: auto;
+padding: 110px 28px 80px;
+display: grid;
+grid-template-columns: 1.15fr .85fr;
+gap: 70px;
+align-items: center;
+position: relative;
+z-index: 1;
+}
 
-    .hero h1 {
-      font-size: clamp(3rem, 6vw, 4.6rem);
-      font-weight: 900;
-      line-height: 1.02;
-      margin-bottom: 22px;
-      background: linear-gradient(120deg, #fff, var(--gold-1));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+.hero h1 {
+font-size: clamp(3rem, 6vw, 4.6rem);
+font-weight: 900;
+line-height: 1.02;
+margin-bottom: 22px;
+background: linear-gradient(120deg, #fff, var(--gold-1));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
 
-    .hero p {
-      color: var(--muted);
-      font-size: 1.08rem;
-      max-width: 520px;
-      margin-bottom: 34px;
-    }
+.hero p {
+color: var(--muted);
+font-size: 1.08rem;
+max-width: 520px;
+margin-bottom: 34px;
+}
 
-    .actions {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
+.actions {
+display: flex;
+gap: 18px;
+flex-wrap: wrap;
+}
 
-    .btn-primary {
-      background: linear-gradient(135deg, var(--gold-1), var(--gold-3));
-      border: none;
-      padding: 16px 30px;
-      font-weight: 900;
-      border-radius: 16px;
-      cursor: pointer;
-      box-shadow: 0 0 45px rgba(255,215,120,.55);
-      transition: transform 0.25s, box-shadow 0.25s;
-    }
+.btn-primary {
+background: linear-gradient(135deg, var(--gold-1), var(--gold-3));
+border: none;
+padding: 16px 30px;
+font-weight: 900;
+border-radius: 16px;
+cursor: pointer;
+box-shadow: 0 0 45px rgba(255,215,120,.55);
+transition: transform 0.25s, box-shadow 0.25s;
+}
 
-    .btn-primary:hover {
-      transform: scale(1.08);
-      box-shadow: 0 0 60px rgba(255,215,120,0.75), 0 0 120px rgba(255,215,120,0.3);
-    }
+.btn-primary:hover {
+transform: scale(1.08);
+box-shadow: 0 0 60px rgba(255,215,120,0.75), 0 0 120px rgba(255,215,120,0.3);
+}
 
-    .btn-outline {
-      background: transparent;
-      border: 1px solid rgba(255,215,120,.45);
-      color: var(--gold-1);
-      padding: 16px 30px;
-      border-radius: 16px;
-      font-weight: 700;
-      cursor: pointer;
-    }
+.btn-outline {
+background: transparent;
+border: 1px solid rgba(255,215,120,.45);
+color: var(--gold-1);
+padding: 16px 30px;
+border-radius: 16px;
+font-weight: 700;
+cursor: pointer;
+}
 
-    .hero-card {
-      position: relative;
-      background: linear-gradient(180deg, #171104, #090909);
-      border-radius: 30px;
-      padding: 36px 34px;
-      border: 1px solid rgba(255,215,120,.18);
-      box-shadow:
-        inset 0 0 50px rgba(255,215,120,.05),
-        0 25px 90px rgba(0,0,0,.9);
-      overflow: hidden;
-    }
+.hero-card {
+position: relative;
+background: linear-gradient(180deg, #171104, #090909);
+border-radius: 30px;
+padding: 36px 34px;
+border: 1px solid rgba(255,215,120,.18);
+box-shadow:
+inset 0 0 50px rgba(255,215,120,.05),
+0 25px 90px rgba(0,0,0,.9);
+overflow: hidden;
+}
 
-    .hero-card::after {
-      content: "";
-      position: absolute;
-      inset: -40%;
-      background: conic-gradient(
-        from 0deg,
-        transparent,
-        rgba(255,215,120,.06),
-        transparent
-      );
-      animation: spin 22s linear infinite;
-      pointer-events: none;
-    }
+.hero-card::after {
+content: "";
+position: absolute;
+inset: -40%;
+background: conic-gradient(
+from 0deg,
+transparent,
+rgba(255,215,120,.06),
+transparent
+);
+animation: spin 22s linear infinite;
+pointer-events: none;
+}
 
-    .hero-card h3 {
-      font-size: 1.4rem;
-      margin-bottom: 22px;
-      color: var(--gold-1);
-      position: relative;
-      z-index: 1;
-    }
+.hero-card h3 {
+font-size: 1.4rem;
+margin-bottom: 22px;
+color: var(--gold-1);
+position: relative;
+z-index: 1;
+}
 
-    .stat {
-      display: flex;
-      justify-content: space-between;
-      margin: 18px 0;
-      font-size: 1.05rem;
-      color: #e6e6e6;
-      position: relative;
-      z-index: 1;
-    }
+.stat {
+display: flex;
+justify-content: space-between;
+margin: 18px 0;
+font-size: 1.05rem;
+color: #e6e6e6;
+position: relative;
+z-index: 1;
+}
 
-    footer {
-      margin-top: auto;
-      border-top: 1px solid rgba(255,215,120,.12);
-      padding: 32px 24px;
-      text-align: center;
-      color: #888;
-      font-size: .9rem;
-      position: relative;
-      z-index: 1;
-    }
+.trending-section {
+max-width: 1300px;
+margin: 0 auto 80px;
+padding: 0 28px;
+z-index: 2;
+position: relative;
+}
+.trending-header { display: flex; align-items: center; margin-bottom: 15px; gap: 12px; }
+.trending-header h2 { font-size: 0.9rem; color: var(--gold-1); text-transform: uppercase; letter-spacing: 2px; opacity: 0.7; }
+.line { height: 1px; background: linear-gradient(90deg, rgba(255,215,120,0.2), transparent); flex-grow: 1; }
+.scroll-container { width: 100%; overflow: hidden; position: relative; mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent); }
 
-    #particles {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-    }
+.horizontal-scroll { 
+    display: inline-flex; 
+    gap: 15px; 
+    padding: 10px 0; 
+    will-change: transform;
+}
+.horizontal-scroll.pausing,
+.horizontal-scroll.paused {
+    animation: none !important;
+}
 
-    /* ===== POPUP ===== */
-    #popup-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.65);
-      backdrop-filter: blur(10px);
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+@keyframes autoscroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-    #popup-box {
-      position: relative;
-      background: linear-gradient(180deg, #171104, #090909);
-      border: 1px solid rgba(255,215,120,.25);
-      border-radius: 24px;
-      padding: 36px 40px;
-      width: min(420px, 90%);
-      box-shadow:
-        0 0 60px rgba(255,215,120,.35),
-        0 30px 90px rgba(0,0,0,.9);
-      text-align: center;
-    }
+.game-card { min-width: 180px; height: 100px; background: #0a0a0a; border: 1px solid rgba(255,215,120,0.1); border-radius: 14px; overflow: hidden; cursor: pointer; position: relative; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s; }
+.game-card:hover { transform: scale(1.05); border-color: var(--gold-1); }
+.game-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.4; transition: opacity 0.4s; }
+.game-card:hover img { opacity: 0.8; }
+.game-card .game-info { position: absolute; bottom: 0; width: 100%; padding: 8px 12px; background: linear-gradient(transparent, rgba(0,0,0,0.8)); }
+.game-card .game-info span { color: #fff; font-weight: 600; font-size: 0.75rem; }
 
-    #popup-box h2 {
-      color: var(--gold-1);
-      margin-bottom: 12px;
-    }
+footer {
+margin-top: auto;
+border-top: 1px solid rgba(255, 215, 120, 0.12);
+padding: 24px;
+background: rgba(5, 5, 5, 0.8);
+position: relative;
+z-index: 1;
+}
 
-    #popup-box p {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
+.footer-container {
+max-width: 1300px;
+margin: 0 auto;
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 20px;
+flex-wrap: wrap;
+}
 
-    #popup-close {
-      position: absolute;
-      top: 14px;
-      right: 16px;
-      background: none;
-      border: none;
-      color: var(--gold-1);
-      font-size: 1.2rem;
-      font-weight: 900;
-      cursor: pointer;
-    }
+.footer-left { display: flex; align-items: center; gap: 15px; }
+.footer-left .logo { font-size: 1.1rem; margin-bottom: 0; }
+.footer-links { display: flex; gap: 20px; align-items: center; }
+.footer-links a, .footer-links button { color: var(--muted); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.2s; background: none; border: none; cursor: pointer; padding: 0; }
+.footer-links a:hover, .footer-links button:hover { color: var(--gold-1); }
+.footer-right { font-size: 0.85rem; color: var(--muted); display: flex; align-items: center; gap: 15px; }
+.status-dot { color: #4CAF50; font-size: 0.7rem; vertical-align: middle; }
 
-    footer {
-      margin-top: auto;
-      border-top: 1px solid rgba(255, 215, 120, 0.12);
-      padding: 24px;
-      background: rgba(5, 5, 5, 0.8);
-      position: relative;
-      z-index: 1;
-    }
+#particles {
+position: fixed;
+inset: 0;
+z-index: 0;
+pointer-events: none;
+}
 
-    .footer-container {
-      max-width: 1300px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap; /* Ensures it stacks on very small screens */
-    }
+#popup-overlay {
+position: fixed;
+inset: 0;
+background: rgba(0,0,0,0.65);
+backdrop-filter: blur(10px);
+z-index: 9999;
+display: flex;
+align-items: center;
+justify-content: center;
+}
 
-    .footer-left {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
+#popup-box {
+position: relative;
+background: linear-gradient(180deg, #171104, #090909);
+border: 1px solid rgba(255,215,120,.25);
+border-radius: 24px;
+padding: 36px 40px;
+width: min(420px, 90%);
+box-shadow: 0 0 60px rgba(255,215,120,.35), 0 30px 90px rgba(0,0,0,.9);
+text-align: center;
+}
 
-    .footer-left .logo {
-      font-size: 1.1rem;
-      margin-bottom: 0;
-    }
+#popup-box h2 { color: var(--gold-1); margin-bottom: 12px; }
+#popup-box p { color: var(--muted); font-size: 0.95rem; }
 
-    .footer-links {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-    }
+#popup-close {
+position: absolute;
+top: 14px;
+right: 16px;
+background: none;
+border: none;
+color: var(--gold-1);
+font-size: 1.2rem;
+font-weight: 900;
+cursor: pointer;
+transition: color 0.2s;
+}
 
-    .footer-links a, .footer-links button {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 500;
-      transition: color 0.2s;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-    }
+#popup-close:hover { color: #ffffff !important; }
 
-    .footer-links a:hover, .footer-links button:hover {
-      color: var(--gold-1);
-    }
+#discord-btn { margin-top: 20px; background-color: #5865F2; border: none; color: #fff; font-weight: 700; padding: 12px 24px; border-radius: 12px; cursor: pointer; font-size: 1rem; transition: transform 0.25s, box-shadow 0.25s; }
+#discord-btn:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(88,101,242,0.5); }
 
-    .footer-right {
-      font-size: 0.85rem;
-      color: var(--muted);
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
+@keyframes shine { to { background-position: 200% center; } }
+@keyframes spin { to { transform: rotate(360deg); } }
 
-    .status-dot {
-      color: #4CAF50;
-      font-size: 0.7rem;
-      vertical-align: middle;
-    }
-
-    @media (max-width: 768px) {
-      .footer-container {
-        flex-direction: column;
-        text-align: center;
-        gap: 15px;
-      }
-    }
-
-    #popup-close:hover { color: #fff; }
-
-    /* ===== Discord Button ===== */
-    #discord-btn {
-      margin-top: 20px;
-      background-color: #5865F2; /* Discord blurple */
-      border: none;
-      color: #fff;
-      font-weight: 700;
-      padding: 12px 24px;
-      border-radius: 12px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: transform 0.25s, box-shadow 0.25s;
-    }
-
-    #discord-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(88,101,242,0.5), 0 0 40px rgba(88,101,242,0.3);
-    }
-
-    @keyframes shine { to { background-position: 200% center; } }
-    @keyframes spin { to { transform: rotate(360deg); } }
-  </style>
+@media (max-width: 768px) {
+.footer-container { flex-direction: column; text-align: center; gap: 15px; }
+.hero { grid-template-columns: 1fr; text-align: center; padding-top: 60px; }
+.hero p { margin: 0 auto 34px; }
+.actions { justify-content: center; }
+}
+</style>
 </head>
 <body>
 <canvas id="particles"></canvas>
 
-<!-- POPUP -->
 <div id="popup-overlay">
-  <div id="popup-box">
-    <button id="popup-close">✕</button>
-    <h2>Welcome to Vertex Gold</h2>
-    <p>Hey! Welcome to Vertex Gold! We love anyone using this site except for a girl named Patrice, who should get off the site like a good girl.</p>
-    <a href="https://discord.gg/tnY8WCmHPj" target="_blank">
-      <button id="discord-btn">Join the Discord</button>
-    </a>
-  </div>
+<div id="popup-box">
+<button id="popup-close">✕</button>
+<h2>Welcome to Vertex Gold</h2>
+<p>Hey! Welcome to Vertex Gold! We love anyone using this site except for a girl named Patrice, who should get off the site like a good girl.</p>
+<a href="https://discord.gg/tnY8WCmHPj" target="_blank">
+<button id="discord-btn">Join the Discord</button>
+</a>
+</div>
 </div>
 
 <header>
-  <div class="nav">
-    <div class="logo">VERTEX GOLD</div>
-    <div style="display:flex; gap:14px;">
-      <a href="index.html"><button>Hub</button></a>
-      <a href="play.html"><button>Games</button></a>
-      <a href="apps.html"><button>Apps</button></a>
-      <a href="viewer.html"><button>Viewer</button></a>
-    </div>
-  </div>
+<div class="nav">
+<div class="logo">VERTEX GOLD</div>
+<div style="display:flex; gap:14px;">
+<a href="index.html"><button>Hub</button></a>
+<a href="play.html"><button>Games</button></a>
+<a href="apps.html"><button>Apps</button></a>
+<a href="viewer.html"><button>Viewer</button></a>
+</div>
+</div>
 </header>
-<section class="hero">
-  <div>
-    <h1>Vertex<br>Gold</h1>
-    <p>Welcome to the vertex of UBG. This is the peak, and there is nothing better.</p>
-    <div class="actions">
-      <a href="play.html"><button class="btn-primary">Play Now</button></a>
-      <a href="#" onclick="cloakTab()"><button class="btn-outline">Cloak Tab</button></a>
-    </div>
-  </div>
 
-  <div class="hero-card">
-    <h3>Live Platform Stats</h3>
-    <div class="stat"><span>Games Available</span><strong>128</strong></div>
+<section class="hero">
+<div>
+<h1>Vertex<br>Gold</h1>
+<p>Welcome to the vertex of UBG. This is the peak, and there is nothing better.</p>
+<div class="actions">
+<a href="play.html"><button class="btn-primary">Play Now</button></a>
+<a href="#" onclick="cloakTab()"><button class="btn-outline">Cloak Tab</button></a>
+</div>
+</div>
+
+<div class="hero-card">
+<h3>Live Platform Stats</h3>
+<div class="stat"><span>Games Available</span><strong id="game-total">...</strong></div>
     <div class="stat"><span>Players Online</span><strong id="players-count">Loading...</strong></div>
-    <div class="stat"><span>Status</span><strong>Online</strong></div>
-  </div>
+<div class="stat"><span>Status</span><strong>Online</strong></div>
+</div>
 </section>
 
-<footer>
-  <div class="footer-container">
-    <div class="footer-left">
-      <div class="logo">VERTEX GOLD</div>
-      <span style="color: rgba(255,215,120,0.2)">|</span>
-      <div class="footer-links">
-        <a href="index.html">Hub</a>
-        <a href="play.html">Games</a>
-        <a href="apps.html">Apps</a>
-        <a href="viewer.html">Viewer</a>
-        <a href="https://discord.gg/tnY8WCmHPj" target="_blank">Discord</a>
-        <button onclick="openDmca()">DMCA</button>
-      </div>
+<div class="trending-section">
+    <div class="trending-header">
+        <h2>Live Game Feed</h2>
+        <div class="line"></div>
     </div>
+    <div class="scroll-container">
+        <div class="horizontal-scroll" id="game-scroller"></div>
+    </div>
+</div>
 
-    <div class="footer-right">
-      <span>&copy; 2026 Owned by <strong>ScramJr</strong></span>
-      <span style="color: rgba(255,215,120,0.2)">|</span>
-      <span><span class="status-dot">●</span> All games online</span>
-    </div>
-  </div>
+<footer>
+<div class="footer-container">
+<div class="footer-left">
+<div class="logo">VERTEX GOLD</div>
+<span style="color: rgba(255,215,120,0.2)">|</span>
+<div class="footer-links">
+<a href="index.html">Hub</a>
+<a href="play.html">Games</a>
+<a href="apps.html">Apps</a>
+<a href="viewer.html">Viewer</a>
+<a href="https://discord.gg/tnY8WCmHPj" target="_blank">Discord</a>
+<button onclick="openDmca()">DMCA</button>
+</div>
+</div>
+<div class="footer-right">
+<span>&copy; 2026 Owned by <strong>ScramJr</strong></span>
+<span style="color: rgba(255,215,120,0.2)">|</span>
+<span><span class="status-dot">●</span> All games online</span>
+</div>
+</div>
 </footer>
 
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
@@ -420,148 +385,170 @@
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 
 <script>
-  const firebaseConfig = {
-  apiKey: "AIzaSyCAMwP6d2aZ7y1XK0YUujKmDg-50Tm_xQw",
-  authDomain: "goldhub-c1a71.firebaseapp.com",
-    databaseURL: "https://goldhub-c1a71-default-rtdb.firebaseio.com/",
-  projectId: "goldhub-c1a71",
-  };
+const gamesUrl = 'https://raw.githubusercontent.com/ten8mystery/Vertex-Gold/main/data/games.json';
+async function loadGames() {
+    try {
+        const response = await fetch(gamesUrl);
+        let games = await response.json();
+        games = Array.isArray(games) ? games.slice().sort((a, b) => {
+            if (!a.name && !b.name) return 0;
+            if (!a.name) return 1;
+            if (!b.name) return -1;
+            return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
+        }) : [];
+        const gamesCount = games.filter(g => typeof g.name === 'string' && g.name.trim().length > 0).length;
 
-  firebase.initializeApp(firebaseConfig);
+        const scroller = document.getElementById('game-scroller');
+        document.getElementById('game-total').textContent = gamesCount;
 
-  const auth = firebase.auth();
-  const db = firebase.database();
-  const playersCountEl = document.getElementById("players-count");
+        const createCard = (game) => {
+            if (typeof game.name === 'string' && game.name.trim().toUpperCase() === '[!] REQUEST GAME') {
+                return document.createComment('Request Game hidden');
+            }
+            const card = document.createElement('div');
+            card.className = 'game-card';
+            card.onclick = () => window.location.href = 'play.html';
+            card.innerHTML = `<img src="${game.image || ''}"><div class="game-info"><span>${game.name}</span></div>`;
+            return card;
+        };
+        [...games, ...games].forEach(game => {
+            const card = createCard(game);
+            if (!(card instanceof Comment)) scroller.appendChild(card);
+        });
+    } catch (e) { console.error(e); }
+}
+loadGames();
 
-  auth.signInAnonymously().catch(error => {
-    console.error("Auth error:", error);
-  });
-
-  auth.onAuthStateChanged(user => {
+const firebaseConfig = { apiKey: "AIzaSyCAMwP6d2aZ7y1XK0YUujKmDg-50Tm_xQw", authDomain: "goldhub-c1a71.firebaseapp.com", databaseURL: "https://goldhub-c1a71-default-rtdb.firebaseio.com/", projectId: "goldhub-c1a71" };
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.database();
+auth.signInAnonymously();
+auth.onAuthStateChanged(user => {
     if (!user) return;
-
-    const uid = user.uid;
-    const userRef = db.ref("connections/" + uid);
-    const connectionsRef = db.ref("connections");
-
+    const userRef = db.ref("connections/" + user.uid);
     userRef.set(true);
-
     userRef.onDisconnect().remove();
+    db.ref("connections").on("value", snap => { document.getElementById("players-count").textContent = snap.numChildren(); });
+});
 
-    connectionsRef.on("value", snap => {
-      playersCountEl.textContent = snap.numChildren();
-    });
-  });
-</script>
-
-<script>
 const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
 let particlesArray = [];
-const particleCount = 80;
-const lineDistance = 120;
-let mouse = { x: null, y: null };
-
-window.addEventListener('resize', () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-});
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-canvas.addEventListener('mousemove', e => {
-  mouse.x = e.x;
-  mouse.y = e.y;
-});
-
-canvas.addEventListener('mouseleave', () => {
-  mouse.x = null;
-  mouse.y = null;
-});
-
+canvas.width = window.innerWidth; canvas.height = window.innerHeight;
 class Particle {
-  constructor() {
-    this.x = Math.random() * canvas.width;
-    this.y = Math.random() * canvas.height;
-    this.size = Math.random() * 2 + 1;
-    this.speedX = (Math.random() - 0.5) * 0.5;
-    this.speedY = (Math.random() - 0.5) * 0.5;
-    this.color = 'rgba(255,200,90,0.2)';
-  }
-  update() {
-    this.x += this.speedX;
-    this.y += this.speedY;
+constructor() {
+this.x = Math.random() * canvas.width;
+this.y = Math.random() * canvas.height;
+this.size = Math.random() * 2 + 1;
+this.speedX = (Math.random() - 0.5) * 0.5;
+this.speedY = (Math.random() - 0.5) * 0.5;
+}
+update() {
+this.x += this.speedX; this.y += this.speedY;
+if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+}
+draw() { ctx.fillStyle = 'rgba(255,200,90,0.2)'; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI*2); ctx.fill(); }
+}
+function initParticles() { for (let i = 0; i < 80; i++) particlesArray.push(new Particle()); }
+function animate() {
+ctx.clearRect(0, 0, canvas.width, canvas.height);
+particlesArray.forEach(p => { p.update(); p.draw(); });
+for (let a = 0; a < particlesArray.length; a++) {
+for (let b = a + 1; b < particlesArray.length; b++) {
+const dx = particlesArray[a].x - particlesArray[b].x;
+const dy = particlesArray[a].y - particlesArray[b].y;
+const distance = Math.sqrt(dx*dx + dy*dy);
+if (distance < 120) {
+ctx.strokeStyle = `rgba(255,200,90,${1 - distance/120} )`;
+ctx.lineWidth = 0.7;
+ctx.beginPath(); ctx.moveTo(particlesArray[a].x, particlesArray[a].y); ctx.lineTo(particlesArray[b].x, particlesArray[b].y); ctx.stroke();
+} } }
+requestAnimationFrame(animate);
+}
+initParticles(); animate();
 
-    if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-    if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+function openDmca() { alert("DMCA Notice: Contact scentedcheeseburger on Discord!"); }
+function cloakTab() {
+    var win = window.open();
+    win.document.body.style.margin = "0";
+    var iframe = win.document.createElement("iframe");
+    iframe.style.width = "100%"; iframe.style.height = "100%"; iframe.style.border = "none";
+    iframe.src = window.location.href;
+    win.document.body.appendChild(iframe);
+}
+document.getElementById("popup-close").onclick = () => document.getElementById("popup-overlay").style.display = "none";
 
-    // Move slightly toward mouse
-    if (mouse.x && mouse.y) {
-      const dx = mouse.x - this.x;
-      const dy = mouse.y - this.y;
-      const dist = Math.sqrt(dx*dx + dy*dy);
-      if (dist < 100) {
-        this.x -= dx*0.005;
-        this.y -= dy*0.005;
-      }
+(function() {
+    const scroller = document.getElementById('game-scroller');
+    if(!scroller) return;
+
+    const pixelsPerSecond = 80;
+    const easingMs = 350;
+
+    let playing = true;
+    let ease = 1;
+    let lastTimestamp = null;
+    let scrollX = 0;
+    let animationId = null;
+
+    function rafStep(ts) {
+        if(lastTimestamp == null) lastTimestamp = ts;
+        const dt = ts - lastTimestamp;
+        lastTimestamp = ts;
+
+        const easeTarget = playing ? 1 : 0;
+        const diff = easeTarget - ease;
+        if(Math.abs(diff) > 0.001) {
+            ease += diff * Math.min(1, dt/easingMs);
+        } else {
+            ease = easeTarget;
+        }
+
+        if (scroller.children.length > 0) {
+            scrollX -= pixelsPerSecond * (dt/1000) * ease;
+            let totalWidth = 0;
+            for(let i=0; i<scroller.children.length/2; ++i) {
+                totalWidth += scroller.children[i].offsetWidth + 15;
+            }
+            if(totalWidth > 0) {
+                while(scrollX <= -totalWidth) scrollX += totalWidth;
+                scroller.style.transform = `translateX(${scrollX}px)`;
+            }
+        }
+        animationId = requestAnimationFrame(rafStep);
     }
-  }
-  draw() {
-    ctx.fillStyle = this.color;
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
-    ctx.fill();
-  }
-}
 
-function connectParticles() {
-  for (let a = 0; a < particlesArray.length; a++) {
-    for (let b = a + 1; b < particlesArray.length; b++) {
-      const dx = particlesArray[a].x - particlesArray[b].x;
-      const dy = particlesArray[a].y - particlesArray[b].y;
-      const distance = Math.sqrt(dx*dx + dy*dy);
-      if (distance < lineDistance) {
-        ctx.strokeStyle = `rgba(255,200,90,${1 - distance/lineDistance} )`;
-        ctx.lineWidth = 0.7;
-        ctx.beginPath();
-        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-        ctx.stroke();
-      }
+    function startScrollRAF() {
+        if(animationId) return;
+        lastTimestamp = null;
+        animationId = requestAnimationFrame(rafStep);
     }
-  }
-}
 
-function initParticles() {
-  particlesArray = [];
-  for (let i = 0; i < particleCount; i++) {
-    particlesArray.push(new Particle());
-  }
-} 
+    let hoverTimeout = null;
+    scroller.addEventListener("mouseenter", function() {
+        clearTimeout(hoverTimeout);
+        playing = false;
+    });
+    scroller.addEventListener("mouseleave", function() {
+        playing = true;
+    });
 
-  function openDmca() {
-  alert("DMCA Notice: Please contact scentedcheeseburger on Discord or email fortniteballs9.11@outlook.com!");
-}
+    window.addEventListener("resize", () => {
+        scrollX = 0;
+    });
 
-function animateParticles() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  particlesArray.forEach(p => {
-    p.update();
-    p.draw();
-  });
-  connectParticles();
-  requestAnimationFrame(animateParticles);
-}
+    let origLoadGames = window.loadGames;
+    window.loadGames = async function(){
+        await origLoadGames.apply(this, arguments);
+        scrollX = 0;
+        scroller.style.transform = `translateX(0px)`;
+    };
 
-initParticles();
-animateParticles();
-
-const popup = document.getElementById("popup-overlay");
-document.getElementById("popup-close").onclick = () => {
-  popup.style.display = "none";
-};
+    window.addEventListener('DOMContentLoaded', startScrollRAF);
+    if(document.readyState !== "loading") startScrollRAF();
+})();
 </script>
-
 </body>
 </html>
