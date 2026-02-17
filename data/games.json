@@ -1300,5 +1300,11 @@
     "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/462.html",
     "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/462.png",
     "description": "Game Active"
+  },
+  {
+    "name": "Balatro",
+    "src": "https://raw.githubusercontent.com/ten8mystery/Vertex-Gold-Assets/refs/heads/main/balatro.html",
+    "image": "https://sm.ign.com/t/ign_nordic/cover/b/balatro/balatro_dw6s.600.jpg",
+    "description": "Game Active"
   }
 ]
