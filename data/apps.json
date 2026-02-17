@@ -12,27 +12,9 @@
     "description": "Game Active"
   },
   {
-    "name": "ChatGPT",
-    "src": "/unlocker/embed.html#https://www.chatgpt.com",
-    "image": "https://diplo-media.s3.eu-central-1.amazonaws.com/2025/03/openai-chatgpt-surge-deepseek.jpg",
-    "description": "Game Active"
-  },
-  {
     "name": "Music",
     "src": "https://raw.githubusercontent.com/ten8mystery/Diamond-Backend/main/music.html",
     "image": "https://i.ytimg.com/vi/mrm50KbvGnk/maxresdefault.jpg",
-    "description": "Game Active"
-  },
-  {
-    "name": "Youtube",
-    "src": "/unlocker/embed.html#https://www.youtube.com",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png",
-    "description": "Game Active"
-  },
-  {
-    "name": "Spotify",
-    "src": "/unlocker/embed.html#https://www.open.spotify.com",
-    "image": "https://www.techhive.com/wp-content/uploads/2023/04/Spotify_Logo.jpg",
     "description": "Game Active"
   },
   {
