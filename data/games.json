@@ -1268,7 +1268,7 @@
   {
     "name": "Among Us",
     "src": "https://raw.githubusercontent.com/ten8mystery/Vertex-Gold-Assets/refs/heads/main/amongus.html",
-    "image": "https://assets.nintendo.com/image/upload/q_auto:best/f_auto/dpr_2.0/store/software/switch/70010000036098/758ab0b61205081da2466386940752c70e0e5ea43bd39e8b9b13eaa455c69b7e",
+    "image": "https://static.wikia.nocookie.net/among-us-wiki/images/8/84/Among_Us.png",
     "description": "Game Active"
   },
   {
@@ -1298,7 +1298,7 @@
   {
     "name": "Balatro",
     "src": "https://raw.githubusercontent.com/ten8mystery/Vertex-Gold-Assets/refs/heads/main/balatro.html",
-    "image": "https://sm.ign.com/t/ign_nordic/cover/b/balatro/balatro_dw6s.600.jpg",
+    "image": "https://upload.wikimedia.org/wikipedia/en/8/89/Balatro_cover.jpg",
     "description": "Game Active"
   }
 ]
