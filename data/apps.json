@@ -13,7 +13,7 @@
   },
   {
     "name": "ChatGPT",
-    "src": "https://raw.githubusercontent.com/ten8mystery/Vertex-Gold/refs/heads/main/data/local/zones/ai.html",
+    "src": "/unlocker/embed.html#https://www.chatgpt.com",
     "image": "https://diplo-media.s3.eu-central-1.amazonaws.com/2025/03/openai-chatgpt-surge-deepseek.jpg",
     "description": "Game Active"
   },
@@ -24,20 +24,26 @@
     "description": "Game Active"
   },
   {
-    "name": "Wish I Knew",
-    "src": "https://raw.githubusercontent.com/ten8mystery/Vertex-Gold/refs/heads/main/data/local/zones/wishiknew.html",
-    "image": "https://i.ytimg.com/vi/-1XlDCRBxxY/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGGggaChoMA8=&rs=AOn4CLBKAP5caGhW_V0FO9SGeUdNDYGgEA",
+    "name": "Youtube",
+    "src": "/unlocker/embed.html#https://www.youtube.com",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Spotify",
+    "src": "/unlocker/embed.html#https://www.open.spotify.com",
+    "image": "https://www.techhive.com/wp-content/uploads/2023/04/Spotify_Logo.jpg",
     "description": "Game Active"
   },
   {
     "name": "Movies",
-    "src": "https://raw.githubusercontent.com/ten8mystery/Vertex-Gold/refs/heads/main/data/local/zones/movies.html",
+    "src": "https://raw.githubusercontent.com/ten8mystery/Vertex-Gold-Assets/refs/heads/main/movies.html",
     "image": "https://us-west-2.graphassets.com/Am5rKdLUrSZS2vQnL0H52z/hS5sY58RSW64KSXS87EA",
     "description": "Game Active"
   },
   {
     "name": "Website Cloner",
-    "src": "https://raw.githubusercontent.com/ten8mystery/Vertex-Gold/refs/heads/main/data/local/zones/vertexcloner.html",
+    "src": "https://raw.githubusercontent.com/ten8mystery/Vertex-Gold/refs/heads/main/vertexcloner.html",
     "image": "https://raw.githubusercontent.com/ten8mystery/Vertex-Gold/refs/heads/main/images/vertexcloner.png",
     "description": "Game Active"
   }
