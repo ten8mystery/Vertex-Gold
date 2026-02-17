@@ -1272,12 +1272,6 @@
     "description": "Game Active"
   },
   {
-    "name": "Portal",
-    "src": "https://raw.githubusercontent.com/ten8mystery/Vertex-Gold-Assets/refs/heads/main/portal.html",
-    "image": "https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Portal_standalonebox.jpg/250px-Portal_standalonebox.jpg",
-    "description": "Game Active"
-  },
-  {
     "name": "Amanda the Adventurer",
     "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/450.html",
     "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/450.png",
