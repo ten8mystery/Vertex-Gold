@@ -1270,5 +1270,35 @@
     "src": "https://raw.githubusercontent.com/ten8mystery/Vertex-Gold-Assets/refs/heads/main/amongus.html",
     "image": "https://assets.nintendo.com/image/upload/q_auto:best/f_auto/dpr_2.0/store/software/switch/70010000036098/758ab0b61205081da2466386940752c70e0e5ea43bd39e8b9b13eaa455c69b7e",
     "description": "Game Active"
+  },
+  {
+    "name": "Portal",
+    "src": "https://raw.githubusercontent.com/ten8mystery/Vertex-Gold-Assets/refs/heads/main/portal.html",
+    "image": "https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Portal_standalonebox.jpg/250px-Portal_standalonebox.jpg",
+    "description": "Game Active"
+  },
+  {
+    "name": "Amanda the Adventurer",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/450.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/450.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Stick With It",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/502.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/502.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Midnight Shift",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/658.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/658.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Dead Plate",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/462.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/462.png",
+    "description": "Game Active"
   }
 ]
