@@ -198,7 +198,7 @@ position: relative;
     color: var(--gold-1); 
     text-transform: uppercase; 
     letter-spacing: 2px; 
-    opacity: 0.9; /* Increased opacity slightly for the icon color */
+    opacity: 0.9;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -211,10 +211,6 @@ position: relative;
     gap: 15px; 
     padding: 10px 0; 
     will-change: transform;
-}
-.horizontal-scroll.pausing,
-.horizontal-scroll.paused {
-    animation: none !important;
 }
 
 @keyframes autoscroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
@@ -406,20 +402,20 @@ async function loadGames() {
         "Survivor.io",
         "Slope",
         "Getting Over It with Bennett Foddy"
-
     ];
 
     try {
         const response = await fetch(gamesUrl);
         let games = await response.json();
         
+        // Correctly set the total count before filtering
+        document.getElementById('game-total').textContent = games.length;
+
         let filteredGames = games.filter(g => 
             g.name && featuredList.includes(g.name)
         );
 
         const scroller = document.getElementById('game-scroller');
-        
-        document.getElementById('game-total').textContent = filteredGames.length;
 
         const createCard = (game) => {
             const card = document.createElement('div');
@@ -441,10 +437,7 @@ async function loadGames() {
                 const card = createCard(game);
                 scroller.appendChild(card);
             });
-        } else {
-            console.warn("No featured games found. Check if the names in 'featuredList' match your JSON exactly.");
         }
-
     } catch (e) { console.error(e); }
 }
 loadGames();
@@ -556,25 +549,10 @@ document.getElementById("popup-close").onclick = () => document.getElementById("
         animationId = requestAnimationFrame(rafStep);
     }
 
-    let hoverTimeout = null;
-    scroller.addEventListener("mouseenter", function() {
-        clearTimeout(hoverTimeout);
-        playing = false;
-    });
-    scroller.addEventListener("mouseleave", function() {
-        playing = true;
-    });
+    scroller.addEventListener("mouseenter", () => playing = false);
+    scroller.addEventListener("mouseleave", () => playing = true);
 
-    window.addEventListener("resize", () => {
-        scrollX = 0;
-    });
-
-    let origLoadGames = window.loadGames;
-    window.loadGames = async function(){
-        await origLoadGames.apply(this, arguments);
-        scrollX = 0;
-        scroller.style.transform = `translateX(0px)`;
-    };
+    window.addEventListener("resize", () => scrollX = 0);
 
     window.addEventListener('DOMContentLoaded', startScrollRAF);
     if(document.readyState !== "loading") startScrollRAF();
