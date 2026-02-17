@@ -6,6 +6,7 @@
 <title>Vertex Gold</title>
 <link rel="icon" type="image/png" href="images/favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
 :root {
@@ -192,7 +193,16 @@ z-index: 2;
 position: relative;
 }
 .trending-header { display: flex; align-items: center; margin-bottom: 15px; gap: 12px; }
-.trending-header h2 { font-size: 0.9rem; color: var(--gold-1); text-transform: uppercase; letter-spacing: 2px; opacity: 0.7; }
+.trending-header h2 { 
+    font-size: 0.9rem; 
+    color: var(--gold-1); 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    opacity: 0.9; /* Increased opacity slightly for the icon color */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
 .line { height: 1px; background: linear-gradient(90deg, rgba(255,215,120,0.2), transparent); flex-grow: 1; }
 .scroll-container { width: 100%; overflow: hidden; position: relative; mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent); }
 
@@ -214,7 +224,7 @@ position: relative;
 .game-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.4; transition: opacity 0.4s; }
 .game-card:hover img { opacity: 0.8; }
 .game-card .game-info { position: absolute; bottom: 0; width: 100%; padding: 8px 12px; background: linear-gradient(transparent, rgba(0,0,0,0.8)); }
-.game-card .game-info span { color: #fff; font-weight: 600; font-size: 0.75rem; }
+.game-card .game-info span { color: #fff; font-weight: 600; font-size: 0.75rem; display: flex; align-items: center; gap: 5px; }
 
 footer {
 margin-top: auto;
@@ -350,7 +360,7 @@ transition: color 0.2s;
 
 <div class="trending-section">
     <div class="trending-header">
-        <h2>Live Game Feed</h2>
+        <h2><i class="fa-solid fa-fire" style="color: var(--gold-2);"></i> Featured Games</h2>
         <div class="line"></div>
     </div>
     <div class="scroll-container">
@@ -386,35 +396,55 @@ transition: color 0.2s;
 
 <script>
 const gamesUrl = 'https://raw.githubusercontent.com/ten8mystery/Vertex-Gold/main/data/games.json';
+
 async function loadGames() {
+    const featuredList = [
+        "Among Us", 
+        "Minecraft 1.12", 
+        "Drive Mad", 
+        "R.E.P.O",
+        "Survivor.io",
+        "Slope",
+        "Getting Over It with Bennett Foddy"
+
+    ];
+
     try {
         const response = await fetch(gamesUrl);
         let games = await response.json();
-        games = Array.isArray(games) ? games.slice().sort((a, b) => {
-            if (!a.name && !b.name) return 0;
-            if (!a.name) return 1;
-            if (!b.name) return -1;
-            return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
-        }) : [];
-        const gamesCount = games.filter(g => typeof g.name === 'string' && g.name.trim().length > 0).length;
+        
+        let filteredGames = games.filter(g => 
+            g.name && featuredList.includes(g.name)
+        );
 
         const scroller = document.getElementById('game-scroller');
-        document.getElementById('game-total').textContent = gamesCount;
+        
+        document.getElementById('game-total').textContent = filteredGames.length;
 
         const createCard = (game) => {
-            if (typeof game.name === 'string' && game.name.trim().toUpperCase() === '[!] REQUEST GAME') {
-                return document.createComment('Request Game hidden');
-            }
             const card = document.createElement('div');
             card.className = 'game-card';
             card.onclick = () => window.location.href = 'play.html';
-            card.innerHTML = `<img src="${game.image || ''}"><div class="game-info"><span>${game.name}</span></div>`;
+            
+            card.innerHTML = `
+                <img src="${game.image || ''}">
+                <div class="game-info">
+                    <span><i class="fa-solid fa-fire" style="color: var(--gold-2);"></i> ${game.name}</span>
+                </div>`;
             return card;
         };
-        [...games, ...games].forEach(game => {
-            const card = createCard(game);
-            if (!(card instanceof Comment)) scroller.appendChild(card);
-        });
+
+        scroller.innerHTML = '';
+
+        if (filteredGames.length > 0) {
+            [...filteredGames, ...filteredGames].forEach(game => {
+                const card = createCard(game);
+                scroller.appendChild(card);
+            });
+        } else {
+            console.warn("No featured games found. Check if the names in 'featuredList' match your JSON exactly.");
+        }
+
     } catch (e) { console.error(e); }
 }
 loadGames();
