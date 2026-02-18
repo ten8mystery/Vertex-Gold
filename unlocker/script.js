@@ -1,10 +1,6 @@
 
-const DEFAULT_WISP = window.SITE_CONFIG?.defaultWisp ?? "wss://glseries.net/wisp/";
-const WISP_SERVERS = [{ name: "GLSeries", url: "wss://glseries.net/wisp/" }];
-
-if (!localStorage.getItem("proxServer")) {
-    localStorage.setItem("proxServer", DEFAULT_WISP);
-}
+const DEFAULT_WISP = window.SITE_CONFIG?.defaultWisp ?? "wss://i-ready.math.bostoncareercounselor.com/wisp/";
+const WISP_SERVERS = [{ name: "Default Wisp", url: "wss://i-ready.math.bostoncareercounselor.com/wisp/" }];
 
 
 function getAllWispServers() {
@@ -67,7 +63,7 @@ async function initializeWithBestServer() {
         return;
     }
 
-    const currentUrl = localStorage.getItem("proxServer") || DEFAULT_WISP;
+    const currentUrl = DEFAULT_WISP || DEFAULT_WISP;
     
     const currentCheck = await pingWispServer(currentUrl, 2000);
     
@@ -163,7 +159,7 @@ async function getSharedConnection() {
     if (sharedConnectionReady) return sharedConnection;
 
     const basePath = getBasePath();
-    const wispUrl = localStorage.getItem("proxServer") ?? DEFAULT_WISP;
+    const wispUrl = DEFAULT_WISP ?? DEFAULT_WISP;
     
     sharedConnection = new BareMux.BareMuxConnection(basePath + "bareworker.js");
     await sharedConnection.setTransport(
@@ -458,7 +454,7 @@ function renderServerList() {
     const list = document.getElementById('server-list');
     list.innerHTML = '';
 
-    const currentUrl = localStorage.getItem('proxServer') ?? DEFAULT_WISP;
+const currentUrl = DEFAULT_WISP;
     const allWisps = [...WISP_SERVERS, ...getStoredWisps()];
 
     allWisps.forEach((server, index) => {
@@ -649,7 +645,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             // Wait for SW to be ready
             await navigator.serviceWorker.ready;
             
-            const wispUrl = localStorage.getItem("proxServer") ?? DEFAULT_WISP;
+            const wispUrl = DEFAULT_WISP ?? DEFAULT_WISP;
             const allServers = getAllWispServers();
             const autoswitch = localStorage.getItem('wispAutoswitch') !== 'false';
             
