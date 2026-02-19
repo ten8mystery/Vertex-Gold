@@ -1,6 +1,6 @@
 
 const DEFAULT_WISP = window.SITE_CONFIG?.defaultWisp ?? "wss://i-ready.math.bostoncareercounselor.com/wisp/";
-const WISP_SERVERS = [{ name: "Default Wisp", url: "wss://i-ready.math.bostoncareercounselor.com/wisp/" }];
+const WISP_SERVERS = [{ name: "Wisp 1", url: "wss://i-ready.math.bostoncareercounselor.com/wisp/" }, { name: "Wisp 2", url: "wss://glseries.net/wisp/" }, { name: "Wisp 3", url: "wss://powerschool.sonofjohn.ca/wisp" }];
 
 
 function getAllWispServers() {
