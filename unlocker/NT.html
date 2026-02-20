@@ -245,7 +245,7 @@
         <i class="fa-solid fa-magnifying-glass"></i>
         <input type="text" id="searchInput" placeholder="Search the web..." autocomplete="off">
         <div class="engine-picker" id="enginePicker">
-          <button type="button" class="engine-btn active" data-url="https://search.brave.com/search?q=">Brave</button>
+          <button type="button" class="engine-btn" data-url="https://search.brave.com/search?q=">Brave</button>
           <button type="button" class="engine-btn" data-url="https://www.google.com/search?q=">Google</button>
           <button type="button" class="engine-btn" data-url="https://duckduckgo.com/?q=">Duck Duck Go</button>
         </div>
@@ -277,12 +277,21 @@
 
   <script>
     const $ = s => document.querySelector(s);
-    // Default engine to Brave or last used from localStorage
-    let currentEngine = localStorage.getItem('lastEngine') || "https://search.brave.com/search?q=";
 
-    // Init Engine Switcher: set button active based on last used engine
+    // Get all engine buttons and their urls
+    const engineButtons = Array.from(document.querySelectorAll('.engine-btn'));
+    const engineUrls = engineButtons.map(btn => btn.dataset.url);
+
+    // Default engine to Brave or last used from localStorage (fallback to first engine if not known)
+    let currentEngine = localStorage.getItem('lastEngine');
+    if (!engineUrls.includes(currentEngine)) {
+      currentEngine = engineUrls[0];
+      localStorage.setItem('lastEngine', currentEngine);
+    }
+
+    // Set engine button active
     function setActiveEngineButton() {
-      document.querySelectorAll('.engine-btn').forEach(btn => {
+      engineButtons.forEach(btn => {
         if (btn.dataset.url === currentEngine) {
           btn.classList.add('active');
         } else {
@@ -292,27 +301,25 @@
     }
     setActiveEngineButton();
 
-    // Scramjet Nav Function (use location only if parent is not available)
+    // Scramjet Nav Function
     const nav = url => {
       $('#loader').classList.add('show');
       const prefix = window.__scramjet_config && window.__scramjet_config.prefix ? window.__scramjet_config.prefix : '/service/';
       const encodedUrl = prefix + btoa(url).replace(/\//g, '_');
 
       if (window.parent && window.parent !== window) {
-        // Post to parent if possible
         window.parent.postMessage({ type: 'navigate', url: encodedUrl }, '*');
       }
       window.location.href = encodedUrl;
     };
 
     // Engine Switcher Logic: mouse and keyboard
-    document.querySelectorAll('.engine-btn').forEach(btn => {
+    engineButtons.forEach(btn => {
       btn.tabIndex = 0;
       btn.addEventListener('click', (e) => {
-        document.querySelectorAll('.engine-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
         currentEngine = btn.dataset.url;
         localStorage.setItem('lastEngine', currentEngine);
+        setActiveEngineButton();
       });
       btn.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
@@ -321,6 +328,9 @@
         }
       });
     });
+
+    // Set correct .active on load
+    setActiveEngineButton();
 
     // Search Form Logic
     $('#searchForm').addEventListener('submit', e => {
