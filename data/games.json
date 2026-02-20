@@ -1294,5 +1294,11 @@
     "src": "https://raw.githubusercontent.com/ten8mystery/Vertex-Gold-Assets/refs/heads/main/balatro.html",
     "image": "https://upload.wikimedia.org/wikipedia/en/8/89/Balatro_cover.jpg",
     "description": "Game Active"
-  }
+  },
+  {
+    "name": "Veck.Io",
+    "src": "https://raw.githubusercontent.com/ten8mystery/Vertex-Gold-Assets/refs/heads/main/veckio.html",
+    "image": "https://veckio.io/data/image/posts/veck-io-banner1.jpg",
+    "description": "Game Active"
+  },
 ]
