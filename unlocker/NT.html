@@ -17,7 +17,7 @@
       --muted: #9b9b9b;
     }
 
-    * {
+    *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -63,19 +63,8 @@
       letter-spacing: -4px;
       margin-bottom: 4px;
       color: var(--gold-1);
-      /* Remove gradient and text fillers */
-      /* background: linear-gradient(100deg, #fff 0%, var(--gold-1) 45%, var(--gold-2) 65%, var(--gold-3) 90%); */
-      /* background-size: 200% auto; */
-      /* -webkit-background-clip: text; */
-      /* -webkit-text-fill-color: transparent; */
-      /* background-clip: text; */
-      /* color: transparent; */
-      /* animation: shine 6s linear infinite; */
       text-shadow: 0 1px 10px rgba(180, 145, 20, .20);
     }
-
-    /* @keyframes shine { to { background-position: 200% center; } } */
-    /* Remove unused shine animation */
 
     .date {
       font-size: 13px;
@@ -216,6 +205,10 @@
       font-size: 12px;
       color: var(--muted);
       font-style: italic;
+      left: 0;
+      right: 0;
+      text-align: center;
+      z-index: 2;
     }
 
     .loader {
@@ -248,32 +241,32 @@
     <div class="date" id="date"></div>
 
     <div class="search-wrapper">
-      <form class="search-box" id="searchForm">
+      <form class="search-box" id="searchForm" autocomplete="off">
         <i class="fa-solid fa-magnifying-glass"></i>
         <input type="text" id="searchInput" placeholder="Search the web..." autocomplete="off">
         <div class="engine-picker" id="enginePicker">
-          <button type="button" class="engine-btn active" data-url="https://search.brave.com/search?q=">Brave</button>"https://search.brave.com/search?q=">Brave</button>
-          <button type="button" class="engine-btn active" data-url="https://www.google.com/search?q=">Google</button>"https://www.google.com/search?q==">Google</button>
-          <button type="button" class="engine-btn active" data-url="https://duckduckgo.com/?q=">Duck Duck Go</button>"https://duckduckgo.com/?q=">Duck Duck Go</button>
+          <button type="button" class="engine-btn active" data-url="https://search.brave.com/search?q=">Brave</button>
+          <button type="button" class="engine-btn" data-url="https://www.google.com/search?q=">Google</button>
+          <button type="button" class="engine-btn" data-url="https://duckduckgo.com/?q=">Duck Duck Go</button>
         </div>
       </form>
     </div>
 
     <div class="shortcuts" id="shortcuts">
       <a class="shortcut" data-url="https://youtube.com">
-        <div class="shortcut-icon"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg"></div>
+        <div class="shortcut-icon"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube"></div>
         <span class="shortcut-label">YouTube</span>
       </a>
       <a class="shortcut" data-url="https://github.com">
-        <div class="shortcut-icon"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg"></div>
+        <div class="shortcut-icon"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub"></div>
         <span class="shortcut-label">GitHub</span>
       </a>
       <a class="shortcut" data-url="https://discord.com">
-        <div class="shortcut-icon"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg"></div>
+        <div class="shortcut-icon"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" alt="Discord"></div>
         <span class="shortcut-label">Discord</span>
       </a>
       
-      <div class="shortcut" id="addShortcut">
+      <div class="shortcut" id="addShortcut" tabindex="0" role="button" aria-label="Add shortcut">
         <div class="shortcut-icon"><i class="fa-solid fa-plus"></i></div>
         <span class="shortcut-label">Add</span>
       </div>
@@ -299,27 +292,28 @@
     }
     setActiveEngineButton();
 
-    // Scramjet Nav Function
+    // Scramjet Nav Function (use location only if parent is not available)
     const nav = url => {
       $('#loader').classList.add('show');
-      const prefix = window.__scramjet_config?.prefix || '/service/';
+      const prefix = window.__scramjet_config && window.__scramjet_config.prefix ? window.__scramjet_config.prefix : '/service/';
       const encodedUrl = prefix + btoa(url).replace(/\//g, '_');
-      
-      // Post to parent and redirect
-      window.parent?.postMessage({ type: 'navigate', url: encodedUrl }, '*');
+
+      if (window.parent && window.parent !== window) {
+        // Post to parent if possible
+        window.parent.postMessage({ type: 'navigate', url: encodedUrl }, '*');
+      }
       window.location.href = encodedUrl;
     };
 
-    // Engine Switcher Logic (fixed to support both mouse and keyboard activation reliably)
+    // Engine Switcher Logic: mouse and keyboard
     document.querySelectorAll('.engine-btn').forEach(btn => {
+      btn.tabIndex = 0;
       btn.addEventListener('click', (e) => {
         document.querySelectorAll('.engine-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         currentEngine = btn.dataset.url;
         localStorage.setItem('lastEngine', currentEngine);
       });
-      // Enable keyboard accessibility (enter/space)
-      btn.tabIndex = 0;
       btn.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
@@ -329,16 +323,16 @@
     });
 
     // Search Form Logic
-    $('#searchForm').onsubmit = e => {
+    $('#searchForm').addEventListener('submit', e => {
       e.preventDefault();
       const q = $('#searchInput').value.trim();
       if (q) {
         const queryUrl = q.match(/^https?:\/\//i) ? q : currentEngine + encodeURIComponent(q);
         nav(queryUrl);
       }
-    };
+    });
 
-    // Fixed Shortcuts Logic
+    // Shortcuts Logic (add/remove)
     $('#shortcuts').addEventListener('click', e => {
       const shortcut = e.target.closest('.shortcut[data-url]');
       const addBtn = e.target.closest('#addShortcut');
@@ -360,31 +354,41 @@
       }
     });
 
+    // Keyboard accessibility for "Add" shortcut
+    $('#addShortcut').addEventListener('keydown', e => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        $('#addShortcut').click();
+      }
+    });
+
     function renderCustom() {
       document.querySelectorAll('.custom-shortcut').forEach(e => e.remove());
       const shortcuts = JSON.parse(localStorage.getItem('shortcuts') || '[]');
       const addBtn = $('#addShortcut');
 
       shortcuts.forEach((s, idx) => {
-        const div = document.createElement('div');
-        div.className = 'shortcut custom-shortcut';
-        div.dataset.url = s.url;
-        div.innerHTML = `
+        const a = document.createElement('a');
+        a.className = 'shortcut custom-shortcut';
+        a.dataset.url = s.url;
+        a.href = s.url;
+        a.innerHTML = `
           <div class="shortcut-icon"><i class="fa-solid fa-link"></i></div>
-          <span class="shortcut-label">${s.name}</span>
+          <span class="shortcut-label"></span>
         `;
-        
+        a.querySelector('.shortcut-label').textContent = s.name;
+
         // Right-click to delete custom shortcut
-        div.oncontextmenu = (e) => {
-          e.preventDefault();
-          if(confirm(`Remove ${s.name}?`)) {
+        a.oncontextmenu = (ev) => {
+          ev.preventDefault();
+          if (confirm(`Remove ${s.name}?`)) {
             shortcuts.splice(idx, 1);
             localStorage.setItem('shortcuts', JSON.stringify(shortcuts));
             renderCustom();
           }
         };
 
-        addBtn.before(div);
+        addBtn.before(a);
       });
     }
 
@@ -397,11 +401,18 @@
     setInterval(updateClock, 1000);
     updateClock();
 
-    // Particle background with lines (Vertex style)
+    // Responsive Particle canvas
     const canvas = $('#particles');
     const ctx = canvas.getContext('2d');
     let particles = [];
-    canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+
+    // Handle resizing
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
 
     class P {
       constructor() {
@@ -421,7 +432,15 @@
         ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI*2); ctx.fill();
       }
     }
-    for(let i=0;i<80;i++) particles.push(new P());
+    function createParticles(n) {
+      particles = [];
+      for(let i=0; i<n; i++) particles.push(new P());
+    }
+    createParticles(80);
+
+    // Re-generate particles on resize (optional)
+    window.addEventListener('resize', () => createParticles(80));
+
     function animate() {
       ctx.clearRect(0,0,canvas.width,canvas.height);
       particles.forEach(p => { p.update(); p.draw(); });
