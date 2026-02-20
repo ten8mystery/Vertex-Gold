@@ -493,7 +493,7 @@
   },
   {
     "name": "GTA: Vice City",
-    "src": "https://raw.githubusercontent.com/ten8mystery/Vertex-Gold-Assets/main/vicecity.html",
+    "src": "https://raw.githubusercontent.com/ten8mystery/Vertex-Gold/main/data/local/zones/vicecity.html",
     "image": "https://play-lh.googleusercontent.com/soywaPw0kB7fiDHokNdGlxbOijFwLe8XahjnZhJAejpCTcPMdogHEu10hcAF6dBW9LI=w526-h296-rw",
     "description": "Game Active"
   },
@@ -1296,9 +1296,21 @@
     "description": "Game Active"
   },
   {
-    "name": "Veck.io",
-    "src": "https://raw.githubusercontent.com/ten8mystery/Vertex-Gold-Assets/refs/heads/main/veckio.html",
-    "image": "https://veckio.io/data/image/posts/veck-io-banner1.jpg",
+    "name": "Brotato",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/723.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/723.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Endoparasitic 2",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/724.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/724.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Fused 240",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/722.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/722.png",
     "description": "Game Active"
   }
 ]
