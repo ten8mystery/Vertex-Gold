@@ -1312,5 +1312,29 @@
     "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/722.html",
     "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/722.png",
     "description": "Game Active"
+  },
+  {
+    "name": "Undertale: Last Breath",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/731.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/731.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "ShredSauce",
+    "src": "https://raw.githubusercontent.com/ten8mystery/Vertex-Gold/main/data/local/zones/shredsauce.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/725.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Tetris",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/733.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/733.png",
+    "description": "Game Active"
+  },
+  {
+    "name": "Fear Assessment",
+    "src": "https://cdn.jsdelivr.net/gh/gn-math/html@main/728.html",
+    "image": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/728.png",
+    "description": "Game Active"
   }
 ]
